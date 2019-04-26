@@ -1,3 +1,7 @@
+/*
+pantalla: funciones que imprimen informacion en la pantalla.
+*/
+
 #ifndef PANTALLA_H_INCLUDED
 #define PANTALLA_H_INCLUDED
 
