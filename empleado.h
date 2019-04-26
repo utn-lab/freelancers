@@ -26,7 +26,7 @@ namespace empleado {
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
         char *horas_char = new char[32];
-        std::snprintf(&horas_char, 32, "%f", empleado->horas_semana);
+        std::snprintf(horas_char, 32, "%f", empleado->horas_semana);
         estructuras::lista *empleado_lista = new estructuras::lista {
             5,
             {
