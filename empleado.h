@@ -8,12 +8,8 @@ namespace empleado {
 
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
-        char *horas_char = new char[10];
-#ifdef _WIN32
-        sprintf(horas_char, "%f", empleado->horas_semana);
-#else 
-        gcvt(empleado->horas_semana, 10, horas_char);
-#endif
+        char *horas_char = new char[32];
+        snprintf(&horas_char, 32, "%f", empleado->horas_semana);
         estructuras::lista *empleado_lista = new estructuras::lista {
             5,
             {
@@ -29,8 +25,8 @@ namespace empleado {
 
     void liberar_lista(
             estructuras::lista *empleado_lista) {
-        delete empleado_lista->v[3];
-        delete empleado_lista;
+        delete[] empleado_lista->v[3];
+        delete[] empleado_lista;
     }
 
     void cargar() {
