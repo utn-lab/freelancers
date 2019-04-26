@@ -1,5 +1,5 @@
 /*
-datos: a borrar
+datos: a borrar.
 */
 
 #ifndef DATOS_H_INCLUDED
