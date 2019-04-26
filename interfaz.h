@@ -10,18 +10,19 @@ namespace interfaz {
     // Usada desde ayuda y salir
     enums::pantalla pantalla_actual;
     // Respuesta de usuario
-    int int_buffer;
     char respuesta[100];
 
     void recibir_respuesta() {
         std::cin.getline(respuesta, 100);
     }
 
-    int respuesta_es_numero() {
+    int respuesta_es_numero() 
+        /*
         int i = 0;
         while (respuesta[i] != '\0') {
             i++;
         }
+        */
         return 0;
     }
 
