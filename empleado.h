@@ -10,7 +10,7 @@ namespace empleado {
             estructuras::empleado *empleado) {
         char *horas_char = new char[10];
 #ifdef _WIN32
-        _gcvt(empleado->horas_semana, 10, horas_char);
+        sprintf(horas_char, "%f", empleado->horas_semana);
 #else 
         gcvt(empleado->horas_semana, 10, horas_char);
 #endif
