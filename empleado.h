@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include "enums.h"
+#include "etiquetas.h"
 #include "pantalla.h"
 
 namespace empleado {
