@@ -1,3 +1,7 @@
+/*
+main: punto de partida para ejecucion del programa.
+*/
+
 #include "enums.h"
 #include "interfaz.h"
 
