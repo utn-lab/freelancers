@@ -26,7 +26,7 @@ namespace empleado {
     void liberar_lista(
             estructuras::lista *empleado_lista) {
         delete[] empleado_lista->v[3];
-        delete[] empleado_lista;
+        delete empleado_lista;
     }
 
     void cargar() {
