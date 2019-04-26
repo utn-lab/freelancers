@@ -8,7 +8,7 @@
 #include "pantalla.h"
 
 namespace empleado {
-    const char empleado_archivo[] = "empleados.bin";
+    const char archivo[] = "empleados.bin";
     int empleados_c = 0;
     estructuras::empleado *empleados;
 
@@ -46,7 +46,7 @@ namespace empleado {
             liberar();
 
         FILE *fp;
-        fp = std::fopen(empleado_archivo, "rb");
+        fp = std::fopen(archivo, "rb");
         if (!fp) {
             empleados_c = 0;
             empleados = NULL;
@@ -77,7 +77,7 @@ namespace empleado {
     // Devuelve la cantidad de bytes escritos
     size_t guardar(estructuras::empleado *empleados) {
         FILE *fp;
-        fp = std::fopen(empleado_archivo, "wb");
+        fp = std::fopen(archivo, "wb");
         size_t devolver = std::fwrite(
                 &empleados,
                 sizeof(empleados),
