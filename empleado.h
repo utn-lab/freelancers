@@ -5,8 +5,8 @@
 
 namespace empleado {
     const char empleado_archivo[] = "empleados.bin";
-    estructuras::empleado *empleados;
     int empleados_c;
+    estructuras::empleado *empleados;
 
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
@@ -41,7 +41,7 @@ namespace empleado {
         }
 
         std::fseek(fp, 0, SEEK_END);
-        long int tamano = std::ftell(fp);
+        long tamano = std::ftell(fp);
         std::rewind(fp);
 
         if (tamano % sizeof(estructuras::empleado) == 0) {
