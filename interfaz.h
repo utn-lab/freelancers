@@ -34,7 +34,7 @@ namespace interfaz {
         respuesta[0] = '\0';
         switch (pantalla) {
             case enums::MENU:
-                mostrar_menu();
+                menu::mostrar();
                 recibir_respuesta();
                 switch (respuesta[0]) {
                     case '1':
