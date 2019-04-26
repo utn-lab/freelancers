@@ -1,5 +1,7 @@
 /*
 datos: a borrar.
+Debe ser reemplazado por horas.h y salario.h cuando estos esten
+listos.
 */
 
 #ifndef DATOS_H_INCLUDED
