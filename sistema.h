@@ -1,3 +1,8 @@
+/*
+sistema: para correr comandos en el sistema
+y mostrar un archivo en la pantalla.
+*/
+
 #ifndef SISTEMA_H_INCLUDED
 #define SISTEMA_H_INCLUDED
 
