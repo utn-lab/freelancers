@@ -3,6 +3,7 @@
 
 #include <cstdio>
 #include "enums.h"
+#include "estructuras.h"
 #include "etiquetas.h"
 #include "pantalla.h"
 
@@ -34,7 +35,15 @@ namespace empleado {
         delete empleado_lista;
     }
 
+    void liberar() {
+        empleados_c = 0;
+        delete[] empleados;
+        empleados = NULL;
+    }
+
     void cargar() {
+        if (empleados != NULL)
+            liberar();
         FILE *fp;
         fp = std::fopen(empleado_archivo, "rb");
         if (!fp) {
@@ -64,10 +73,6 @@ namespace empleado {
         std::fclose(fp);
     }
 
-    void liberar() {
-        delete[] empleados;
-    }
-
     // Devuelve la cantidad de bytes escritos
     size_t guardar(estructuras::empleado *empleados) {
         FILE *fp;
@@ -90,9 +95,6 @@ namespace empleado {
         pantalla::mostrar_grilla_cabecera(
                 &etiquetas::EMPLEADO_CABECERA,
                 enums::CEN);
-
-        // Esto altera empleado_c y empleados
-        cargar();
 
         if (empleados_c == 0) {
             pantalla::mostrar_campo(
