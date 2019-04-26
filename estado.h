@@ -1,3 +1,7 @@
+/*
+estado: a borrar?
+*/
+
 #ifndef ESTADO_H_INCLUDED
 #define ESTADO_H_INCLUDED
 
