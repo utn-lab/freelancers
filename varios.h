@@ -1,3 +1,10 @@
+/*
+menu: muestra menu en pantalla.
+ayuda: muestra ayuda.
+salir: muestra pantalla anterior
+a salir del programa.
+*/
+
 #ifndef VARIOS_H_INCLUDED
 #define VARIOS_H_INCLUDED
 
