@@ -7,6 +7,7 @@ la pantalla, usando funciones de pantalla.h.
 #define EMPLEADO_H_INCLUDED
 
 #include <cstdio>
+
 #include "enums.h"
 #include "estructuras.h"
 #include "etiquetas.h"
@@ -56,22 +57,26 @@ namespace empleado {
 
     // Puebla vector de estructura::empleado, leyendo archivo
     void cargar() {
-        if (empleados_c > 0)
+        if (empleados_c)
             liberar();
 
         FILE *fp;
         fp = std::fopen(archivo, "rb");
+        
+        // Si el archivo no existe o no puede ser abierto
         if (!fp) {
             empleados_c = 0;
             empleados = NULL;
             return;
         }
 
+        // Calcular tamano total de archivo
         std::fseek(fp, 0, SEEK_END);
         long tamano = std::ftell(fp);
         std::rewind(fp);
 
         if (tamano % sizeof(estructuras::empleado) == 0) {
+            // Guardar el archivo entero en memoria
             empleados_c = tamano / sizeof(estructuras::empleado);
     
             empleados =
