@@ -2,10 +2,8 @@
 #define INTERFAZ_H_INCLUDED
 
 #include "enums.h"
-#include "etiquetas.h"
-#include "pantalla.h"
 #include "sistema.h"
-#include "datos.h"
+#include "varios.h"
 #include "empleado.h"
 
 namespace interfaz {
@@ -25,47 +23,6 @@ namespace interfaz {
             i++;
         }
         return 0;
-    }
-
-    void mostrar_menu() {
-        sistema::imprimir_archivo("logo.txt");
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::TITULO_MENU_PRINCIPAL,
-                enums::CEN);
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::MENU_PRINCIPAL,
-                enums::CEN);
-        pantalla::mostrar_seleccione(
-                etiquetas::por_favor,
-                &etiquetas::MENU_PRINCIPAL);
-    }
-
-    void mostrar_horas() {
-    }
-
-    void mostrar_salario() {
-    }
-
-    void mostrar_ayuda() {
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::TITULO_AYUDA,
-                enums::CEN);
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::AYUDA,
-                enums::IZQ);
-        pantalla::mostrar_enter();
-    }
-
-    void mostrar_salir() {
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::TITULO_SALIR,
-                enums::CEN);
-        pantalla::mostrar_lista_vertical(
-                &etiquetas::SALIR,
-                enums::CEN);
-        pantalla::mostrar_seleccione(
-                etiquetas::por_favor,
-                &etiquetas::SALIR);
     }
 
     void ir_a(enums::pantalla pantalla) {
@@ -123,7 +80,7 @@ namespace interfaz {
                 break;
 
             case enums::HORAS:
-                mostrar_horas();
+                //mostrar_horas();
                 recibir_respuesta();
                 switch (respuesta[0]) {
                     default:
@@ -132,7 +89,7 @@ namespace interfaz {
                 break;
 
             case enums::SALARIO:
-                mostrar_salario();
+                //mostrar_salario();
                 recibir_respuesta();
                 switch (respuesta[0]) {
                     default:
@@ -141,7 +98,7 @@ namespace interfaz {
                 break;
 
             case enums::AYUDA:
-                mostrar_ayuda();
+                ayuda::mostrar();
                 recibir_respuesta();
                 switch (respuesta[0]) {
                     case 'q':
@@ -154,7 +111,7 @@ namespace interfaz {
                 break;
 
             case enums::SALIR:
-                mostrar_salir();
+                salir::mostrar();
                 recibir_respuesta();
                 switch (respuesta[0]) {
                     case '\0':
