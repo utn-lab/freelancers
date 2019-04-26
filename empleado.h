@@ -1,6 +1,6 @@
 /*
-empleado: mantiene y muestra los datos de empleados
-en la pantalla, usando funciones de pantalla.h.
+empleado: mantiene y muestra datos de empleados en
+la pantalla, usando funciones de pantalla.h.
 */
 
 #ifndef EMPLEADO_H_INCLUDED
