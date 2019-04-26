@@ -23,7 +23,7 @@ namespace interfaz {
         std::cin.getline(respuesta, 100);
     }
 
-    int respuesta_es_numero() 
+    int respuesta_es_numero() { 
         /*
         int i = 0;
         while (respuesta[i] != '\0') {
