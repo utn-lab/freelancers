@@ -1,6 +1,6 @@
 /*
-etiquetas: todo lo que aparece en pantalla sale de
-este archivo, que usa estructuras estructuras::lista
+etiquetas: todo texto mostrado en pantalla esta definido
+en este archivo, que usa estructuras estructuras::lista
 definidas en estructuras.h.
 */
 
