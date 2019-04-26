@@ -9,7 +9,7 @@
 
 namespace empleado {
     const char empleado_archivo[] = "empleados.bin";
-    int empleados_c;
+    int empleados_c = 0;
     estructuras::empleado *empleados;
 
     estructuras::lista *empleado_a_lista(
@@ -42,8 +42,9 @@ namespace empleado {
     }
 
     void cargar() {
-        if (empleados != NULL)
+        if (empleados_c > 0)
             liberar();
+
         FILE *fp;
         fp = std::fopen(empleado_archivo, "rb");
         if (!fp) {
