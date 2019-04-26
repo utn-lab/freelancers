@@ -1,3 +1,9 @@
+/*
+etiquetas: todo lo que aparece en pantalla sale de
+este archivo, que usa estructuras estructuras::lista
+definidas en estructuras.h.
+*/
+
 #ifndef ETIQUETAS_H_INCLUDED
 #define ETIQUETAS_H_INCLUDED
 
