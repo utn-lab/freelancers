@@ -1,6 +1,8 @@
 #ifndef EMPLEADO_H_INCLUDED
 #define EMPLEADO_H_INCLUDED
 
+#include <cstdio>
+
 namespace empleado {
     const char empleado_archivo[] = "empleados.bin";
     estructuras::empleado *empleados;
@@ -9,7 +11,7 @@ namespace empleado {
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
         char *horas_char = new char[32];
-        snprintf(&horas_char, 32, "%f", empleado->horas_semana);
+        std::snprintf(&horas_char, 32, "%f", empleado->horas_semana);
         estructuras::lista *empleado_lista = new estructuras::lista {
             5,
             {
