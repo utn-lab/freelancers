@@ -1,3 +1,9 @@
+/*
+interfaz: contiene funcion ir_a, llamada desde main.cpp,
+que controla el curso del programa y la interaccion con el
+usuario.
+*/
+
 #ifndef INTERFAZ_H_INCLUDED
 #define INTERFAZ_H_INCLUDED
 
@@ -7,11 +13,12 @@
 #include "empleado.h"
 
 namespace interfaz {
-    // Usada desde ayuda y salir
+    // Usada desde ir_a
     enums::pantalla pantalla_actual;
     // Respuesta de usuario
     char respuesta[100];
 
+    // Llamada desde ir_a
     void recibir_respuesta() {
         std::cin.getline(respuesta, 100);
     }
@@ -26,6 +33,7 @@ namespace interfaz {
         return 0;
     }
 
+    // ir_a: responsable del flujo del programa
     void ir_a(enums::pantalla pantalla) {
         if (pantalla != enums::AYUDA
                 and pantalla != enums::SALIR)
