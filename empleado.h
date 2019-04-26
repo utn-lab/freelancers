@@ -2,6 +2,8 @@
 #define EMPLEADO_H_INCLUDED
 
 #include <cstdio>
+#include "enums.h"
+#include "pantalla.h"
 
 namespace empleado {
     const char empleado_archivo[] = "empleados.bin";
