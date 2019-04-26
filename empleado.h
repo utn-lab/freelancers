@@ -1,3 +1,8 @@
+/*
+empleado: mantiene y muestra los datos de empleados
+en la pantalla.
+*/
+
 #ifndef EMPLEADO_H_INCLUDED
 #define EMPLEADO_H_INCLUDED
 
