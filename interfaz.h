@@ -1,6 +1,6 @@
 /*
 interfaz: contiene funcion ir_a, llamada desde main.cpp,
-que controla el curso del programa y la interaccion con el
+que controla el curso del programa y recibe interaccion del
 usuario.
 */
 
