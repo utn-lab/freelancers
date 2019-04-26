@@ -1,3 +1,8 @@
+/*
+enums: hechos para facilitar la lectura de codigo,
+usados desde la mayoria de los otros archivos.
+*/
+
 #ifndef ENUMS_H_INCLUDED
 #define ENUMS_H_INCLUDED
 
