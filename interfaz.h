@@ -71,19 +71,22 @@ namespace interfaz {
                 empleado::cargar();
                 empleado::mostrar();
                 recibir_respuesta();
-                if (empleado::empleados_c == 0) {
+                if (empleado::empleados_c == 0
+                        || respuesta[0] == '\0') {
                     // TODO: menu agregar empleado
-                } else if (std::strlen(respuesta) >= 2) {
-                    // TODO: buscar en empleado::empleados
                 } else {
-                    // Opciones
-                    switch (respuesta[0]) {
-                        case 'q':
-                            ir_a(enums::MENU);
-                            break;
-                        default:
-                            ir_a(enums::AYUDA);
-                            break;
+                    if (std::strlen(respuesta) >= 2) {
+                        // TODO: buscar en empleado::empleados
+                    } else {
+                        // Opciones
+                        switch (respuesta[0]) {
+                            case 'q':
+                                ir_a(enums::MENU);
+                                break;
+                            default:
+                                ir_a(enums::AYUDA);
+                                break;
+                        }
                     }
                 }
                 break;
