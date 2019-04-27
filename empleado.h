@@ -8,6 +8,10 @@ la pantalla, usando funciones de pantalla.h.
 
 #include <cstdio>
 
+// Necesario para nuevo()
+#include <cstring>
+#include <iostream>
+
 #include "enums.h"
 #include "estructuras.h"
 #include "etiquetas.h"
@@ -100,8 +104,8 @@ namespace empleado {
         fp = std::fopen(archivo, "wb");
         size_t devolver = std::fwrite(
                 &empleados,
-                sizeof(empleados),
-                1,
+                sizeof(estructuras::empleado),
+                empleados_c,
                 fp);
         std::fclose(fp);
         return devolver;
@@ -158,17 +162,86 @@ namespace empleado {
                 }
             }
 
-            estructuras::lista ocurrencias = {
-                limite,
-                ""
-            };
-
             pantalla::mostrar_separadores_h(
                     pantalla::pantalla_ancho);
             pantalla::mostrar_nueva_linea(1);
             pantalla::mostrar_seleccione(
                     etiquetas::empleado_seleccionar,
-                    &ocurrencias);
+                    limite);
+        }
+    }
+
+    void nuevo() {
+        pantalla::mostrar_lista_vertical(
+                &etiquetas::TITULO_EMPLEADO_AGREGAR,
+                enums::CEN);
+        estructuras::empleado nuevo_empleado;
+
+        // DNI
+        nuevo_empleado.dni[0] = '\0';
+        // Validar que el usuario no presione enter
+        while (nuevo_empleado.dni[0] == '\0') {
+            std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
+            std::cin >> nuevo_empleado.dni;
+            std::cout << etiquetas::validando << std::endl;
+        }
+
+        // Chequear si el DNI existe en la lista actual de empleados
+        int existe = -1;
+        for (int i = 0; i < empleados_c; i++) {
+            if (std::strcmp(
+                        empleados[i].dni,
+                        nuevo_empleado.dni) == 0) {
+                existe = i;
+                break;
+            }
+        }
+
+        pantalla::mostrar_nueva_linea(1);
+        // Nombre
+        std::cout << etiquetas::EMPLEADO_CABECERA.v[1] << ": ";
+        std::cin >> nuevo_empleado.nombre;
+
+        // Apellido
+        std::cout << etiquetas::EMPLEADO_CABECERA.v[2] << ": ";
+        std::cin >> nuevo_empleado.apellido;
+
+        // Horas/semana
+        std::cout << etiquetas::EMPLEADO_CABECERA.v[3] << ": ";
+        std::cin >> nuevo_empleado.horas_semana;
+
+        // Sector
+        {
+            int temp;
+
+            std::cout << etiquetas::EMPLEADO_CABECERA.v[4]
+                << " (1-" << etiquetas::EMPLEADO_TIPOS.c << "):";
+            pantalla::mostrar_nueva_linea(1);
+            pantalla::mostrar_lista_vertical(
+                    &etiquetas::EMPLEADO_TIPOS,
+                    enums::IZQ);
+            pantalla::mostrar_nueva_linea(1);
+            std::cout << etiquetas::por_favor << ": ";
+            std::cin >> temp;
+            nuevo_empleado.sector = (enums::sector)temp;
+        }
+        std::cout << etiquetas::guardando << std::endl;
+
+        // Guardar dato en archivo
+        FILE *fp;
+        if (existe == -1) {
+            // Ya que no existe, vamos a agregar el empleado al
+            // archivo y recargar la informacion en memoria
+            fp = std::fopen(archivo, "ab");
+            std::fwrite(
+                    &nuevo_empleado, sizeof(nuevo_empleado), 1, fp);
+            std::fclose(fp);
+            cargar();
+        } else {
+            // El DNI existe, asi que vamos a modificarlo en memoria
+            // y reescribir el archivo
+            fp = std::fopen(archivo, "rb+");
+            std::fclose(fp);
         }
     }
 }

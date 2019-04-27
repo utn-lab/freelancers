@@ -14,6 +14,9 @@ namespace etiquetas {
     const char por_favor[] = "Seleccione una opcion";
     const char empleado_seleccionar[] = "Buscar palabra o seleccionar fila";
     const char no_registros[] = "No hay registros";
+    const char validando[] = "Validando...";
+    const char guardando[] = "Guardando...";
+    const char existe[] = "El registro que esta intentando ingresar ya existe. Presione enter para modificarlo, o 'q' para volver";
     const char enter[] = "Presione enter";
 
     estructuras::lista TITULO_MENU_PRINCIPAL = {
@@ -27,6 +30,13 @@ namespace etiquetas {
         1,
         {
             "EMPLEADOS"
+        }
+    };
+
+    estructuras::lista TITULO_EMPLEADO_AGREGAR = {
+        1,
+        {
+            "NUEVO EMPLEADO"
         }
     };
 

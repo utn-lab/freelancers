@@ -24,7 +24,7 @@ namespace menu {
                 enums::CEN);
         pantalla::mostrar_seleccione(
                 etiquetas::por_favor,
-                &etiquetas::MENU_PRINCIPAL);
+                etiquetas::MENU_PRINCIPAL.c);
     }
 }
 
@@ -50,7 +50,7 @@ namespace salir {
                 enums::CEN);
         pantalla::mostrar_seleccione(
                 etiquetas::por_favor,
-                &etiquetas::SALIR);
+                etiquetas::SALIR.c);
     }
 }
 

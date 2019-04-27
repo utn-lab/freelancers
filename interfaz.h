@@ -73,7 +73,8 @@ namespace interfaz {
                 recibir_respuesta();
                 if (empleado::empleados_c == 0
                         || respuesta[0] == '\0') {
-                    // TODO: menu agregar empleado
+                    sistema::clear();
+                    empleado::nuevo();
                 } else {
                     if (std::strlen(respuesta) >= 2) {
                         // TODO: buscar en empleado::empleados

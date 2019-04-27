@@ -73,17 +73,16 @@ namespace pantalla {
             std::cout << "...";
         } else {
             int espacio = ancho_caracteres - longitud;
-            if (alineacion == enums::CEN
-                    or alineacion == enums::DER) {
-                if (alineacion == enums::CEN)
-                    espacio /= 2;
+            if (alineacion == enums::CEN) {
+                espacio /= 2;
                 mostrar_espacio(espacio);
-            }
+            } else if (alineacion == enums::DER)
+                mostrar_espacio(espacio);
             std::cout << texto;
-            if (alineacion == enums::CEN
-                    or alineacion == enums::IZQ) {
-                if (alineacion == enums::CEN)
-                    espacio = ancho_caracteres - longitud - espacio;
+            if (alineacion == enums::CEN) {
+                espacio = ancho_caracteres - longitud - espacio;
+                mostrar_espacio(espacio);
+            } else if (alineacion == enums::IZQ) {
                 mostrar_espacio(espacio);
             }
         }
@@ -154,10 +153,10 @@ namespace pantalla {
 
     void mostrar_seleccione(
             const char *etiqueta,
-            estructuras::lista *lista) {
+            int ocurrencias) {
         mostrar_nueva_linea(
                 pantalla_alto - estado::lineas_ocupadas - 1);
-        std::cout << etiqueta << " (1-" << lista->c << "): ";
+        std::cout << etiqueta << " (1-" << ocurrencias << "): ";
     }
 }
 
