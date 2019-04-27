@@ -49,18 +49,22 @@ namespace interfaz {
                     case 'e':
                         ir_a(enums::EMPLEADO);
                         break;
+
                     case '2':
                     case 'p':
                         ir_a(enums::HORAS);
                         break;
+
                     case '3':
                     case 'v':
                         ir_a(enums::SALARIO);
                         break;
+
                     case '5':
                     case 'q':
                         ir_a(enums::SALIR);
                         break;
+
                     default:
                         ir_a(enums::AYUDA);
                         break;
@@ -71,23 +75,23 @@ namespace interfaz {
                 empleado::cargar();
                 empleado::mostrar();
                 recibir_respuesta();
-                if (empleado::empleados_c == 0
-                        || respuesta[0] == '\0') {
-                    sistema::clear();
-                    empleado::nuevo();
+
+                if (std::strlen(respuesta) >= 2) {
                 } else {
-                    if (std::strlen(respuesta) >= 2) {
-                        // TODO: buscar en empleado::empleados
-                    } else {
-                        // Opciones
-                        switch (respuesta[0]) {
-                            case 'q':
-                                ir_a(enums::MENU);
-                                break;
-                            default:
-                                ir_a(enums::AYUDA);
-                                break;
-                        }
+                    switch (respuesta[0]) {
+                        case '\0':
+                            sistema::clear();
+                            empleado::nuevo();
+                            ir_a(enums::EMPLEADO);
+                            break;
+
+                        case 'q':
+                            ir_a(enums::MENU);
+                            break;
+
+                        default:
+                            ir_a(enums::AYUDA);
+                            break;
                     }
                 }
                 break;
@@ -117,6 +121,7 @@ namespace interfaz {
                     case 'q':
                         ir_a(enums::SALIR);
                         break;
+
                     default:
                         ir_a(pantalla_actual);
                         break;
@@ -132,6 +137,7 @@ namespace interfaz {
                     case 'y':
                         sistema::clear();
                         break;
+
                     default:
                         ir_a(pantalla_actual);
                         break;
