@@ -11,7 +11,7 @@ namespace enums {
         NINGUNO,
         MENU,
         EMPLEADO,
-        SALARIO,
+        SECTOR,
         HORAS,
         AYUDA,
         SALIR

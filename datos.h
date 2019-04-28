@@ -15,8 +15,6 @@ cuando estos esten listos.
 #include "estructuras.h"
 
 namespace datos {
-    const char horas_archivo[] = "horas.bin";
-    const char salario_archivo[] = "salario.bin";
     float valor_hora[3];
 
     void cargar_default() {

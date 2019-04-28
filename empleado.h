@@ -150,16 +150,14 @@ namespace empleado {
                 limite = empleados_c;
             }
 
+            estructuras::lista *p;
             for (int renglon = 0; renglon < limite; renglon++) {
-                {
-                    estructuras::lista *p;
-                    p = empleado_a_lista(
-                            &empleados[renglon]);
-                    pantalla::mostrar_grilla_renglon(
-                            &p[renglon],
-                            alineaciones);
-                    liberar_lista(p);
-                }
+                p = empleado_a_lista(
+                        &empleados[renglon]);
+                pantalla::mostrar_grilla_renglon(
+                        &p[renglon],
+                        alineaciones);
+                liberar_lista(p);
             }
 
             pantalla::mostrar_separadores_h(
@@ -234,7 +232,7 @@ namespace empleado {
             // archivo y recargar la informacion en memoria
             fp = std::fopen(archivo, "ab");
             std::fwrite(
-                    &nuevo_empleado, sizeof(nuevo_empleado), 1, fp);
+                    &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
             std::fclose(fp);
             cargar();
         } else {

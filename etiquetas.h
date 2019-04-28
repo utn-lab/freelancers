@@ -47,7 +47,7 @@ namespace etiquetas {
         }
     };
 
-    estructuras::lista TITULO_SALARIOS = {
+    estructuras::lista TITULO_SECTOR = {
         1,
         {
             "VALORES DE HORA"
@@ -64,7 +64,7 @@ namespace etiquetas {
     estructuras::lista TITULO_SALIR = {
         1,
         {
-            "¿SALIR?"
+            "SALIR"
         }
     };
 
@@ -87,6 +87,22 @@ namespace etiquetas {
             "Apellido",
             "Horas/semana",
             "Rol"
+        }
+    };
+
+    estructuras::lista HORAS_CABECERA = {
+        2,
+        {
+            EMPLEADO_CABECERA.v[0],
+            EMPLEADO_CABECERA.v[3]
+        }
+    };
+
+    estructuras::lista SECTOR_CABECERA = {
+        2,
+        {
+            "Sector",
+            "Valor de hora"
         }
     };
 
