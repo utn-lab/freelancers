@@ -75,13 +75,24 @@ namespace interfaz {
 
             case enums::EMPLEADO:
                 empleado::cargar();
-                empleado::mostrar();
+                empleado::mostrar(0, NULL);
                 recibir_respuesta();
 
                 if (std::strlen(respuesta) >= 2) {
+                    sistema::clear();
+                    empleado::mostrar(0, respuesta);
+                    recibir_respuesta();
+                    switch (respuesta[0]) {
+                        case 'q':
+                            break;
+
+                        default:
+                            ir_a(enums::EMPLEADO);
+                            break;
+                    }
                 } else {
                     switch (respuesta[0]) {
-                        case '\0':
+                        case 'n':
                             sistema::clear();
                             empleado::nuevo();
                             ir_a(enums::EMPLEADO);

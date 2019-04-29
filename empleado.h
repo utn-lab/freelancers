@@ -110,7 +110,9 @@ namespace empleado {
     }
 
     // Muestra pantalla empleado
-    void mostrar() {
+    void mostrar(
+            const int empezar_por_indice,
+            const char *patron) { // patron puede ser NULL
         // Mostrar titulo
         pantalla::mostrar_lista_vertical(
                 &etiquetas::TITULO_EMPLEADO,
@@ -144,26 +146,41 @@ namespace empleado {
             int limite;
             if (empleados_c > pantalla::grilla_buffer) {
                 limite = pantalla::grilla_buffer;
+                limite += empezar_por_indice;
             } else {
                 limite = empleados_c;
             }
 
             estructuras::lista *p;
-            for (int renglon = 0; renglon < limite; renglon++) {
-                p = empleado_a_lista(
-                        &empleados[renglon]);
-                pantalla::mostrar_grilla_renglon(
-                        p,
-                        alineaciones);
-                liberar_lista(p);
+            for (
+                    int renglon = empezar_por_indice;
+                    renglon < limite;
+                    renglon++) {
+                if (!patron
+                        || std::strstr(
+                            empleados[renglon].dni, patron)
+                        || std::strstr(
+                            empleados[renglon].nombre, patron)
+                        || std::strstr(
+                            empleados[renglon].apellido, patron)) {
+                    p = empleado_a_lista(
+                            &empleados[renglon]);
+                    pantalla::mostrar_grilla_renglon(
+                            p,
+                            alineaciones);
+                    liberar_lista(p);
+                }
             }
 
             pantalla::mostrar_separadores_h(
                     pantalla::pantalla_ancho);
             pantalla::mostrar_nueva_linea(1);
-            pantalla::mostrar_seleccione(
-                    etiquetas::empleado_seleccionar,
-                    limite);
+            if (patron)
+                pantalla::mostrar_enter();
+            else
+                pantalla::mostrar_seleccione(
+                        etiquetas::empleado_seleccionar,
+                        limite);
         }
     }
 
