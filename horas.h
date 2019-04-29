@@ -5,6 +5,10 @@ horas: mantiene datos de horas.
 #ifndef HORAS_H_INCLUDED
 #define HORAS_H_INCLUDED
 
+#include "enums.h"
+#include "etiquetas.h"
+#include "pantalla.h"
+
 namespace horas {
     const char archivo[] = "horas.bin";
 
