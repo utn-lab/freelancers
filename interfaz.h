@@ -84,7 +84,6 @@ namespace interfaz {
                         case '\0':
                             sistema::clear();
                             empleado::nuevo();
-                            recibir_respuesta();
                             ir_a(enums::EMPLEADO);
                             break;
 

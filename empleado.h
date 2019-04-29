@@ -182,6 +182,8 @@ namespace empleado {
             std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
             std::cin.getline(nuevo_empleado.dni, 16);
             std::cout << etiquetas::validando << std::endl;
+            if (std::strcmp(nuevo_empleado.dni, "q") == 0)
+                return;
         }
 
         // Chequear si el DNI existe en la lista actual de empleados
@@ -222,6 +224,7 @@ namespace empleado {
             std::cout << etiquetas::por_favor << ": ";
             std::cin >> temp;
             nuevo_empleado.sector = (enums::sector)(temp - 1);
+            std::cin.ignore();
         }
         std::cout << etiquetas::guardando << std::endl;
 
