@@ -30,7 +30,7 @@ namespace empleado {
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
         char *horas_char = new char[32];
-        std::snprintf(horas_char, 32, "%f", empleado->horas_semana);
+        std::snprintf(horas_char, 32, "%.1f", empleado->horas_semana);
         estructuras::lista *empleado_lista = new estructuras::lista {
             5,
             {
@@ -155,7 +155,7 @@ namespace empleado {
                 p = empleado_a_lista(
                         &empleados[renglon]);
                 pantalla::mostrar_grilla_renglon(
-                        &p[renglon],
+                        p,
                         alineaciones);
                 liberar_lista(p);
             }
@@ -180,7 +180,7 @@ namespace empleado {
         // Validar que el usuario no presione enter
         while (nuevo_empleado.dni[0] == '\0') {
             std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
-            std::cin >> nuevo_empleado.dni;
+            std::cin.getline(nuevo_empleado.dni, 16);
             std::cout << etiquetas::validando << std::endl;
         }
 
@@ -198,11 +198,11 @@ namespace empleado {
         pantalla::mostrar_nueva_linea(1);
         // Nombre
         std::cout << etiquetas::EMPLEADO_CABECERA.v[1] << ": ";
-        std::cin >> nuevo_empleado.nombre;
+        std::cin.getline(nuevo_empleado.nombre, 32);
 
         // Apellido
         std::cout << etiquetas::EMPLEADO_CABECERA.v[2] << ": ";
-        std::cin >> nuevo_empleado.apellido;
+        std::cin.getline(nuevo_empleado.apellido, 32);
 
         // Horas/semana
         std::cout << etiquetas::EMPLEADO_CABECERA.v[3] << ": ";
@@ -221,7 +221,7 @@ namespace empleado {
             pantalla::mostrar_nueva_linea(1);
             std::cout << etiquetas::por_favor << ": ";
             std::cin >> temp;
-            nuevo_empleado.sector = (enums::sector)temp;
+            nuevo_empleado.sector = (enums::sector)(temp - 1);
         }
         std::cout << etiquetas::guardando << std::endl;
 
