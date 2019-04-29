@@ -63,16 +63,17 @@ namespace empleado {
     void cargar() {
         if (empleados_c)
             liberar();
+        else {
+            empleados_c = 0;
+            empleados = NULL;
+        }
 
         FILE *fp;
         fp = std::fopen(archivo, "rb");
         
         // Si el archivo no existe o no puede ser abierto
-        if (!fp) {
-            empleados_c = 0;
-            empleados = NULL;
+        if (!fp)
             return;
-        }
 
         // Calcular tamano total de archivo
         std::fseek(fp, 0, SEEK_END);
@@ -90,9 +91,6 @@ namespace empleado {
                     sizeof(estructuras::empleado),
                     empleados_c,
                     fp);
-        } else {
-            empleados_c = 0;
-            empleados = NULL;
         }
         std::fclose(fp);
     }
@@ -174,6 +172,8 @@ namespace empleado {
                 &etiquetas::TITULO_EMPLEADO_AGREGAR,
                 enums::CEN);
         estructuras::empleado nuevo_empleado;
+
+        nuevo_empleado.activo = true;
 
         // DNI
         nuevo_empleado.dni[0] = '\0';
