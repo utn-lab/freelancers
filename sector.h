@@ -5,6 +5,10 @@ sector: mantiene datos de sectores.
 #ifndef SECTOR_H_INCLUDED
 #define SECTOR_H_INCLUDED
 
+#include "enums.h"
+#include "etiquetas.h"
+#include "pantalla.h"
+
 namespace sector {
     const char archivo[] = "sector.bin";
 
