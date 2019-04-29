@@ -15,13 +15,13 @@ a salir del programa.
 
 namespace menu {
     void mostrar() {
+        sistema::imprimir_archivo("logo.txt");
         pantalla::mostrar_lista_vertical(
                 &etiquetas::TITULO_MENU_PRINCIPAL,
                 enums::CEN);
         pantalla::mostrar_lista_vertical(
                 &etiquetas::MENU_PRINCIPAL,
                 enums::CEN);
-        sistema::imprimir_archivo("logo.txt");
         pantalla::mostrar_seleccione(
                 etiquetas::por_favor,
                 etiquetas::MENU_PRINCIPAL.c);
