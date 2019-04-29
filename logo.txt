@@ -1,13 +1,7 @@
-                   88b           d88                           88
-                   888b         d888                           ""
-                   88`8b       d8'88
-                   88 `8b     d8' 88  ,adPPYYba,   ,adPPYb,d8  88   ,adPPYba,
-                   88  `8b   d8'  88  ""     `Y8  a8"    `Y88  88  a8"     ""
-                   88   `8b d8'   88  ,adPPPPP88  8b       88  88  8b
-                   88    `888'    88  88,    ,88  "8a,   ,d88  88  "8a,   ,aa
-                   88     `8'     88  `"8bbdP"Y8   `"YbbdP"Y8  88   `"Ybbd8"'
-                                                   aa,    ,88
-                                                    "Y8bbdP"
+                              8b    d8    db     dP""b8 88  dP""b8 
+                              88b  d88   dPYb   dP   `" 88 dP   `" 
+                              88YbdP88  dP__Yb  Yb  "88 88 Yb      
+                              88 YY 88 dP""""Yb  YboodP 88  YboodP 
                                        __ _
                             ___  ___  / _| |___      ____ _ _ __ ___
                            / __|/ _ \| |_| __\ \ /\ / / _` | '__/ _ \
