@@ -134,7 +134,7 @@ namespace etiquetas {
     estructuras::lista EMPLEADO_TIPOS = {
         3,
         {
-            "Diseñador",
+            "Disenador",
             "Desarrollador",
             "Analista"
         }
