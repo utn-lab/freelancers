@@ -86,7 +86,7 @@ namespace empleado {
             empleados =
                 new estructuras::empleado[empleados_c]; // borrar con delete[]
             std::fread(
-                    &empleados,
+                    empleados,
                     sizeof(estructuras::empleado),
                     empleados_c,
                     fp);
