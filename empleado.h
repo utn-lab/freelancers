@@ -236,14 +236,18 @@ namespace empleado {
             fp = std::fopen(archivo, "ab");
             std::fwrite(
                     &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
-            std::fclose(fp);
-            cargar();
         } else {
             // El DNI existe, asi que vamos a modificarlo en memoria
             // y reescribir el archivo
             fp = std::fopen(archivo, "rb+");
-            std::fclose(fp);
+            std::fseek(
+                    fp,
+                    sizeof(estructuras::empleado) * existe,
+                    SEEK_SET);
+            std::fwrite(
+                    &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
         }
+        std::fclose(fp);
     }
 }
 
