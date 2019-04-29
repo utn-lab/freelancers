@@ -119,7 +119,7 @@ namespace etiquetas {
             "",
             "En menu, la primer letra selecciona una opcion (a = ayuda, s = salir);",
             "En grilla, al menos dos letras para buscar palabra; 'q' para salir;",
-            "'a' para pagina anterior, 's' para siguiente."
+            "'n' para agregar registro; 'a' para pagina anterior, 's' para siguiente."
         }
     };
 

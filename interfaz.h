@@ -78,7 +78,8 @@ namespace interfaz {
                 empleado::mostrar(0, NULL);
                 recibir_respuesta();
 
-                if (std::strlen(respuesta) >= 2) {
+                if (empleado::empleados_c
+                        && std::strlen(respuesta) >= 2) {
                     sistema::clear();
                     empleado::mostrar(0, respuesta);
                     recibir_respuesta();
