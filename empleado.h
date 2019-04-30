@@ -241,7 +241,7 @@ namespace empleado {
 
         // Sector
         {
-            int temp;
+            int temp = -1;
 
             std::cout << etiquetas::EMPLEADO_CABECERA.v[4]
                 << " (1-" << etiquetas::EMPLEADO_TIPOS.c << "):";
@@ -250,10 +250,12 @@ namespace empleado {
                     &etiquetas::EMPLEADO_TIPOS,
                     enums::IZQ);
             pantalla::mostrar_nueva_linea(1);
-            std::cout << etiquetas::por_favor << ": ";
-            std::cin >> temp;
+            while (!(temp >= 1 && temp <= 3)) {
+                std::cout << etiquetas::por_favor << ": ";
+                std::cin >> temp;
+                std::cin.ignore();
+            }
             nuevo_empleado.sector = (enums::sector)(temp - 1);
-            std::cin.ignore();
         }
         std::cout << etiquetas::guardando << std::endl;
 
