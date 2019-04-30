@@ -33,9 +33,9 @@ namespace pantalla {
 
     const char separador_h = '-';
     const char separador_v = '|';
-    const int separador_h_longitud = 1;
-    const int separador_v_longitud = 1;
 
+    // Devuelve la longitud del renglon mas largo en
+    // la estructura::lista
     int encontrar_mayor_longitud(
             estructuras::lista *lista) {
         int mayor = 0;
@@ -65,6 +65,10 @@ namespace pantalla {
         }
     }
 
+    // Imprime una cadena de texto *texto en el ancho
+    // indicado en ancho_caracteres, rodeada de espacios
+    // Si la cadena es mas corta que el ancho deseado,
+    // el texto va a estar alineado segun enums::alineacion
     void mostrar_campo(
             const char *texto,
             int ancho_caracteres,
@@ -91,6 +95,11 @@ namespace pantalla {
         }
     }
 
+    // Imprime una estructura::lista en forma vertical,
+    // rodeada por un marco
+    // Usada en menus y titulos, como el menu principal
+    // El texto interno de la cadena va a estar alineado
+    // segun alineacion
     void mostrar_lista_vertical(
             estructuras::lista *lista,
             enums::alineacion alineacion) {
@@ -118,6 +127,10 @@ namespace pantalla {
         mostrar_nueva_linea(1);
     }
 
+    // Imprime una estructura::lista en forma de renglon de
+    // grilla, horizontalmente, como en pantalla empleado
+    // Requiere un vector de enums::alineacion tan grande como
+    // cuantas columnas haya (notar uso de renglon->c)
     void mostrar_grilla_renglon(
             estructuras::lista *renglon,
             enums::alineacion *alineaciones) {
@@ -127,12 +140,17 @@ namespace pantalla {
                     renglon->v[columna],
                     campo_ancho,
                     alineaciones[columna]);
+            // Si esta es la ultima columna, no imprimir el
+            // proximo separador
             if (renglon->c - columna != 1)
                 std::cout << separador_v;
         }
         mostrar_nueva_linea(1);
     }
 
+    // Imprime un renglon de grilla con una linea de separador_h
+    // arriba y abajo de si
+    // La alineacion es la misma para todas las columnas
     void mostrar_grilla_cabecera(
             estructuras::lista *cabecera,
             enums::alineacion alineacion) {
@@ -149,6 +167,7 @@ namespace pantalla {
     }
 
     void mostrar_enter() {
+        // Ir abajo de todo
         mostrar_nueva_linea(
                 pantalla_alto - estado::lineas_ocupadas - 1);
         std::cout << etiquetas::enter << ": ";
