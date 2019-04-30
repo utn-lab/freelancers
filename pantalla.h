@@ -107,7 +107,7 @@ namespace pantalla {
         int mayor = encontrar_mayor_longitud(lista);
         // Calcular espacio entre borde izquierdo y menu
         int margen_izquierdo =
-            (pantalla_ancho - mayor - separador_v_longitud) / 2 - 1;
+            (pantalla_ancho - mayor - 1) / 2 - 1;
         // Reservar espacio entre separadores
         mayor += 2;
         // Imprimir marco
