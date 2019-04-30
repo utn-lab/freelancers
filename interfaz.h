@@ -74,7 +74,6 @@ namespace interfaz {
                 break;
 
             case enums::EMPLEADO:
-                empleado::cargar();
                 empleado::mostrar(0, NULL);
                 recibir_respuesta();
 
@@ -96,6 +95,7 @@ namespace interfaz {
                         case 'n':
                             sistema::clear();
                             empleado::nuevo();
+                            empleado::cargar();
                             ir_a(enums::EMPLEADO);
                             break;
 
