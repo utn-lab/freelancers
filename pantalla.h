@@ -15,7 +15,7 @@ pantalla: funciones que imprimen informacion en la pantalla.
 
 namespace pantalla {
 #ifdef _WIN32
-    int pantalla_ancho = 114;
+    int pantalla_ancho = 120;
     int pantalla_alto = 30;
 #else
     int pantalla_ancho = 80;
