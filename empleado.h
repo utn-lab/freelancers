@@ -263,8 +263,6 @@ namespace empleado {
             // Ya que no existe, vamos a agregar el empleado al
             // archivo y recargar la informacion en memoria
             fp = std::fopen(archivo, "ab");
-            std::fwrite(
-                    &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
         } else {
             // El DNI existe, asi que vamos a modificarlo en memoria
             // y reescribir el archivo
@@ -273,9 +271,9 @@ namespace empleado {
                     fp,
                     sizeof(estructuras::empleado) * existe,
                     SEEK_SET);
-            std::fwrite(
-                    &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
         }
+        std::fwrite(
+                &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
         std::fclose(fp);
     }
 }
