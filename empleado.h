@@ -147,15 +147,16 @@ namespace empleado {
                     int renglon = empezar_por_indice;
                     renglon < limite;
                     renglon++) {
-                // Si patron es nulo, y si no es nulo,
-                // pero el parametro coincide
-                if (!patron
-                        || std::strstr(
-                            empleados[renglon].dni, patron)
-                        || std::strstr(
-                            empleados[renglon].nombre, patron)
-                        || std::strstr(
-                            empleados[renglon].apellido, patron)) {
+                // Si empleado esta activo (inactivo = borrado), y si patron
+                // es nulo, o no es nulo, pero el parametro coincide
+                if (empleados[renglon].activo
+                        && (!patron
+                            || std::strstr(
+                                empleados[renglon].dni, patron)
+                            || std::strstr(
+                                empleados[renglon].nombre, patron)
+                            || std::strstr(
+                                empleados[renglon].apellido, patron))) {
                     // pantalla::mostrar_grilla_renglon recibe un
                     // estructuras::lista como parametro, pero el
                     // vector de empleados que estamos leyendo
