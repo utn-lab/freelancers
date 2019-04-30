@@ -29,8 +29,8 @@ namespace empleado {
     // devolviendo un puntero a la estructura::lista
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
-        char *horas_char = new char[32];
-        std::snprintf(horas_char, 32, "%.1f", empleado->horas_semana);
+        char *horas_char = new char[16];
+        std::snprintf(horas_char, 16, "%.1f", empleado->horas_semana);
         estructuras::lista *empleado_lista = new estructuras::lista {
             5,
             {
