@@ -16,8 +16,7 @@ namespace etiquetas {
     const char no_registros[] = "No hay registros";
     const char validando[] = "Validando...";
     const char guardando[] = "Guardando...";
-    const char existe[] = "El registro que esta intentando ingresar ya existe. Presione enter para modificarlo, o 'q' para volver";
-    const char enter[] = "Presione enter";
+    const char enter[] = "Presione enter o ingrese un comando";
 
     estructuras::lista TITULO_MENU_PRINCIPAL = {
         1,

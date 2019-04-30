@@ -152,6 +152,7 @@ namespace empleado {
             }
 
             estructuras::lista *p;
+            int ocurrencias = 0;
             for (
                     int renglon = empezar_por_indice;
                     renglon < limite;
@@ -169,18 +170,29 @@ namespace empleado {
                             p,
                             alineaciones);
                     liberar_lista(p);
+                    ocurrencias++;
                 }
             }
 
-            pantalla::mostrar_separadores_h(
-                    pantalla::pantalla_ancho);
-            pantalla::mostrar_nueva_linea(1);
-            if (patron)
+            if (patron) {
+                if (ocurrencias == 0) {
+                    pantalla::mostrar_campo(
+                            etiquetas::no_registros,
+                            pantalla::pantalla_ancho,
+                            enums::CEN);
+                    pantalla::mostrar_nueva_linea(1);
+                }
+                pantalla::mostrar_separadores_h(
+                        pantalla::pantalla_ancho);
                 pantalla::mostrar_enter();
-            else
+            } else {
+                pantalla::mostrar_separadores_h(
+                        pantalla::pantalla_ancho);
+                pantalla::mostrar_nueva_linea(1);
                 pantalla::mostrar_seleccione(
                         etiquetas::empleado_seleccionar,
-                        limite);
+                        ocurrencias);
+            }
         }
     }
 
