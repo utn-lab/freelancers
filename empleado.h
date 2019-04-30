@@ -260,12 +260,10 @@ namespace empleado {
         // Guardar dato en archivo
         FILE *fp;
         if (existe == -1) {
-            // Ya que no existe, vamos a agregar el empleado al
-            // archivo y recargar la informacion en memoria
+            // Ya que no existe, vamos a agregar el empleado al archivo
             fp = std::fopen(archivo, "ab");
         } else {
-            // El DNI existe, asi que vamos a modificarlo en memoria
-            // y reescribir el archivo
+            // El DNI existe, reescribir registro
             fp = std::fopen(archivo, "rb+");
             std::fseek(
                     fp,
