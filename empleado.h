@@ -95,20 +95,6 @@ namespace empleado {
         std::fclose(fp);
     }
 
-    // Guarda vector de estructura::empleado en archivo,
-    // reemplazando sus datos anteriores
-    size_t guardar(estructuras::empleado *empleados) {
-        FILE *fp;
-        fp = std::fopen(archivo, "wb");
-        size_t devolver = std::fwrite(
-                &empleados,
-                sizeof(estructuras::empleado),
-                empleados_c,
-                fp);
-        std::fclose(fp);
-        return devolver;
-    }
-
     // Muestra pantalla empleado
     void mostrar(
             const int empezar_por_indice,
@@ -122,6 +108,7 @@ namespace empleado {
                 &etiquetas::EMPLEADO_CABECERA,
                 enums::CEN);
 
+        // Si no hay empleados cargados
         if (empleados_c == 0) {
             pantalla::mostrar_campo(
                     etiquetas::no_registros,
@@ -151,12 +138,17 @@ namespace empleado {
                 limite = empleados_c;
             }
 
+            // Mostrar renglones de grilla
             estructuras::lista *p;
             int ocurrencias = 0;
+            // Empezando por el indice indicado por el parametro
+            // empezar_por_indice, recorrer array de empleados
             for (
                     int renglon = empezar_por_indice;
                     renglon < limite;
                     renglon++) {
+                // Si patron es nulo, y si no es nulo,
+                // pero el parametro coincide
                 if (!patron
                         || std::strstr(
                             empleados[renglon].dni, patron)
@@ -164,8 +156,14 @@ namespace empleado {
                             empleados[renglon].nombre, patron)
                         || std::strstr(
                             empleados[renglon].apellido, patron)) {
+                    // pantalla::mostrar_grilla_renglon recibe un
+                    // estructuras::lista como parametro, pero el
+                    // vector de empleados que estamos leyendo
+                    // contiene estructura::empleado
+                    // Convertirlo
                     p = empleado_a_lista(
                             &empleados[renglon]);
+                    // Pasar a mostrar_grilla_renglon
                     pantalla::mostrar_grilla_renglon(
                             p,
                             alineaciones);
@@ -174,6 +172,7 @@ namespace empleado {
                 }
             }
 
+            // Si un patron fue definido
             if (patron) {
                 if (ocurrencias == 0) {
                     pantalla::mostrar_campo(
