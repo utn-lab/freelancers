@@ -117,7 +117,9 @@ namespace empleado {
             pantalla::mostrar_nueva_linea(1);
             pantalla::mostrar_separadores_h(
                     pantalla::pantalla_ancho);
-            pantalla::mostrar_enter();
+            pantalla::mostrar_seleccione(
+                    etiquetas::enter,
+                    0);
         } else {
             // Por cada columna, elegir una alineacion
             // Esto afecta a renglones y no a la cabecera
@@ -184,13 +186,15 @@ namespace empleado {
                 }
                 pantalla::mostrar_separadores_h(
                         pantalla::pantalla_ancho);
-                pantalla::mostrar_enter();
+                pantalla::mostrar_seleccione(
+                        etiquetas::enter,
+                        0);
             } else {
                 pantalla::mostrar_separadores_h(
                         pantalla::pantalla_ancho);
                 pantalla::mostrar_nueva_linea(1);
                 pantalla::mostrar_seleccione(
-                        etiquetas::empleado_seleccionar,
+                        etiquetas::buscar_seleccionar,
                         ocurrencias);
             }
         }
@@ -251,7 +255,7 @@ namespace empleado {
                     enums::IZQ);
             pantalla::mostrar_nueva_linea(1);
             while (!(temp >= 1 && temp <= 3)) {
-                std::cout << etiquetas::por_favor << ": ";
+                std::cout << etiquetas::seleccionar << ": ";
                 std::cin >> temp;
                 std::cin.ignore();
             }

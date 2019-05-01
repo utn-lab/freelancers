@@ -10,9 +10,9 @@ definidas en estructuras.h.
 #include "estructuras.h"
 
 namespace etiquetas {
-    const char app_nombre[] = "FREELANCERS";
-    const char por_favor[] = "Seleccione una opcion";
-    const char empleado_seleccionar[] = "Buscar palabra o seleccionar fila";
+    const char seleccionar[] = "Seleccione";
+    const char nuevo_valor[] = "Nuevo valor";
+    const char buscar_seleccionar[] = "Buscar palabra o seleccionar fila";
     const char no_registros[] = "No hay registros";
     const char validando[] = "Validando...";
     const char guardando[] = "Guardando...";
@@ -50,6 +50,13 @@ namespace etiquetas {
         1,
         {
             "VALORES DE HORA"
+        }
+    };
+
+    estructuras::lista TITULO_SECTOR_CAMBIAR = {
+        1,
+        {
+            "CAMBIAR VALOR DE HORA"
         }
     };
 
@@ -100,7 +107,7 @@ namespace etiquetas {
     estructuras::lista SECTOR_CABECERA = {
         2,
         {
-            "Sector",
+            "Rol",
             "Valor de hora"
         }
     };

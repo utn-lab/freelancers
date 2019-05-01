@@ -23,7 +23,7 @@ namespace menu {
                 &etiquetas::MENU_PRINCIPAL,
                 enums::CEN);
         pantalla::mostrar_seleccione(
-                etiquetas::por_favor,
+                etiquetas::seleccionar,
                 etiquetas::MENU_PRINCIPAL.c);
     }
 }
@@ -36,7 +36,9 @@ namespace ayuda {
         pantalla::mostrar_lista_vertical(
                 &etiquetas::AYUDA,
                 enums::IZQ);
-        pantalla::mostrar_enter();
+        pantalla::mostrar_seleccione(
+                etiquetas::enter,
+                0);
     }
 }
 
@@ -49,7 +51,7 @@ namespace salir {
                 &etiquetas::SALIR,
                 enums::CEN);
         pantalla::mostrar_seleccione(
-                etiquetas::por_favor,
+                etiquetas::seleccionar,
                 etiquetas::SALIR.c);
     }
 }

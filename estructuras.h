@@ -28,11 +28,6 @@ namespace estructuras {
         char dni[8];
         float horas;
     };
-
-    struct sector {
-        enums::sector sector;
-        float valor_hora;
-    };
 }
 
 #endif // ESTRUCTURAS_H_INCLUDED

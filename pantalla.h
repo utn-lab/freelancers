@@ -166,19 +166,15 @@ namespace pantalla {
         mostrar_nueva_linea(1);
     }
 
-    void mostrar_enter() {
-        // Ir abajo de todo
-        mostrar_nueva_linea(
-                pantalla_alto - estado::lineas_ocupadas - 1);
-        std::cout << etiquetas::enter << ": ";
-    }
-
     void mostrar_seleccione(
             const char *etiqueta,
             int ocurrencias) {
         mostrar_nueva_linea(
                 pantalla_alto - estado::lineas_ocupadas - 1);
-        std::cout << etiqueta << " (1-" << ocurrencias << "): ";
+        std::cout << etiqueta;
+        if (ocurrencias > 1)
+            std::cout << " (1-" << ocurrencias << ")";
+        std::cout << ": ";
     }
 }
 

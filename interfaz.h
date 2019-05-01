@@ -128,10 +128,26 @@ namespace interfaz {
                 break;
 
             case enums::SECTOR:
+                sector::cargar();
                 sector::mostrar();
                 recibir_respuesta();
                 switch (respuesta[0]) {
+                    case '1':
+                    case '2':
+                    case '3':
+                        sistema::clear();
+                        sector::cambiar_valor(
+                                (enums::sector)(respuesta[0] - 49));
+                        sector::guardar();
+                        ir_a(enums::SECTOR);
+                        break;
+
+                    case 'q':
+                        ir_a(enums::MENU);
+                        break;
+
                     default:
+                        ir_a(enums::AYUDA);
                         break;
                 }
                 break;
