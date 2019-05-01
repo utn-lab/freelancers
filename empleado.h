@@ -95,6 +95,26 @@ namespace empleado {
         std::fclose(fp);
     }
 
+    void a_minusculas(char *string) {
+        int i = 0;
+        while (string[i] != '\0') {
+            if (string[i] >= 'A'
+                    && string[i] <= 'Z')
+                string[i] += 32;
+            i++;
+        }
+    }
+
+    bool buscar_patron(const char *array, const char *patron) {
+        char temp_1[32];
+        char temp_2[32];
+        std::strcpy(temp_1, array);
+        std::strcpy(temp_2, patron);
+        a_minusculas(temp_1);
+        a_minusculas(temp_2);
+        return (std::strstr(temp_1, temp_2) != NULL);
+    }
+
     // Muestra pantalla empleado
     void mostrar(
             const int empezar_por_indice,
@@ -153,11 +173,11 @@ namespace empleado {
                 // es nulo, o no es nulo, pero el parametro coincide
                 if (empleados[renglon].activo
                         && (!patron
-                            || std::strstr(
+                            || buscar_patron(
                                 empleados[renglon].dni, patron)
-                            || std::strstr(
+                            || buscar_patron(
                                 empleados[renglon].nombre, patron)
-                            || std::strstr(
+                            || buscar_patron(
                                 empleados[renglon].apellido, patron))) {
                     // pantalla::mostrar_grilla_renglon recibe un
                     // estructuras::lista como parametro, pero el
