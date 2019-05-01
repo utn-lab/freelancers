@@ -19,8 +19,8 @@ namespace sector {
 
     estructuras::lista *sector_a_lista(
             enums::sector sector) {
-        char *valor_char = new char[16];
-        std::snprintf(valor_char, 16, "$ %.2f", valor_hora[sector]);
+        char *valor_char = new char[64];
+        std::snprintf(valor_char, 64, "$ %.2f", valor_hora[sector]);
         estructuras::lista *sector_lista = new estructuras::lista {
             2,
             {

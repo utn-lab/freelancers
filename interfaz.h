@@ -155,15 +155,7 @@ namespace interfaz {
             case enums::AYUDA:
                 ayuda::mostrar();
                 recibir_respuesta();
-                switch (respuesta[0]) {
-                    case 'q':
-                        ir_a(enums::SALIR);
-                        break;
-
-                    default:
-                        ir_a(pantalla_actual);
-                        break;
-                }
+                ir_a(pantalla_actual);
                 break;
 
             case enums::SALIR:
