@@ -111,7 +111,7 @@ namespace etiquetas {
         {
             "Modulos:",
             "",
-            "- Empleado: permite ver y agregar empleados, y ver las horas modificadas",
+            "- Empleado: permite ver y agregar empleados, y ver las horas trabajadas",
             "  por ellos",
             "- Valores de hora: para cambiar el valor de hora (salario) para cada rol",
             "",
