@@ -343,8 +343,6 @@ namespace empleado {
             }
             if (existe == -1)
                 std::cout << etiquetas::invalido << std::endl;
-            else
-                std::cout << etiquetas::existe << std::endl;
         }
 
         estructuras::lista *p;
