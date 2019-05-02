@@ -354,6 +354,7 @@ namespace empleado {
 
         std::cout << etiquetas::nuevo_valor << ": ";
         std::cin >> empleados[existe].horas_semana;
+        std::cin.ignore();
 
         // Guardar en archivo
         FILE *fp;
