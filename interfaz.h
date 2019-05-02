@@ -95,6 +95,25 @@ namespace interfaz {
                     ir_a(enums::EMPLEADO);
                 } else {
                     switch (respuesta[0]) {
+                        case 'a':
+                            estado::empezar_por_indice -=
+                                pantalla::grilla_buffer;
+                            if (estado::empezar_por_indice < 0)
+                                estado::empezar_por_indice = 0;
+                            ir_a(enums::EMPLEADO);
+                            break;
+
+                        case 's':
+                            estado::empezar_por_indice +=
+                                pantalla::grilla_buffer;
+                            if (estado::empezar_por_indice
+                                    > empleado::empleados_c)
+                                estado::empezar_por_indice =
+                                    empleado::empleados_c
+                                    - pantalla::grilla_buffer;
+                            ir_a(enums::EMPLEADO);
+                            break;
+
                         case 'h':
                             sistema::clear();
                             empleado::cambiar_horas();
