@@ -39,7 +39,7 @@ namespace interfaz {
     }
 
     // ir_a: responsable del flujo del programa
-    void ir_a(enums::pantalla pantalla) {
+    enums::pantalla ir_a(enums::pantalla pantalla) {
         if (pantalla != enums::AYUDA
                 and pantalla != enums::SALIR)
             pantalla_actual = pantalla;
@@ -53,22 +53,22 @@ namespace interfaz {
                     case '1':
                     case 'e':
                     case 'p':
-                        ir_a(enums::EMPLEADO);
+                        return enums::EMPLEADO;
                         break;
 
                     case '2':
                     case 'v':
-                        ir_a(enums::SECTOR);
+                        return enums::SECTOR;
                         break;
 
                     case '4':
                     case 's':
                     case 'q':
-                        ir_a(enums::SALIR);
+                        return enums::SALIR;
                         break;
 
                     default:
-                        ir_a(enums::AYUDA);
+                        return enums::AYUDA;
                         break;
                 }
                 break;
@@ -89,10 +89,10 @@ namespace interfaz {
                         case 'h':
                             sistema::clear();
                             empleado::cambiar_horas();
-                            ir_a(enums::EMPLEADO);
+                            return enums::EMPLEADO;
                             break;
                     }
-                    ir_a(enums::EMPLEADO);
+                    return enums::EMPLEADO;
                 } else {
                     switch (respuesta[0]) {
                         case 'a':
@@ -100,7 +100,7 @@ namespace interfaz {
                                 pantalla::grilla_buffer;
                             if (estado::empezar_por_indice < 0)
                                 estado::empezar_por_indice = 0;
-                            ir_a(enums::EMPLEADO);
+                            return enums::EMPLEADO;
                             break;
 
                         case 's':
@@ -111,28 +111,28 @@ namespace interfaz {
                                 estado::empezar_por_indice =
                                     empleado::empleados_c
                                     - pantalla::grilla_buffer;
-                            ir_a(enums::EMPLEADO);
+                            return enums::EMPLEADO;
                             break;
 
                         case 'h':
                             sistema::clear();
                             empleado::cambiar_horas();
-                            ir_a(enums::EMPLEADO);
+                            return enums::EMPLEADO;
                             break;
 
                         case 'n':
                             sistema::clear();
                             empleado::nuevo();
                             empleado::cargar();
-                            ir_a(enums::EMPLEADO);
+                            return enums::EMPLEADO;
                             break;
 
                         case 'q':
-                            ir_a(enums::MENU);
+                            return enums::MENU;
                             break;
 
                         default:
-                            ir_a(enums::AYUDA);
+                            return enums::AYUDA;
                             break;
                     }
                 }
@@ -150,15 +150,15 @@ namespace interfaz {
                         sector::cambiar_valor(
                                 (enums::sector)(respuesta[0] - 49));
                         sector::guardar();
-                        ir_a(enums::SECTOR);
+                        return enums::SECTOR;
                         break;
 
                     case 'q':
-                        ir_a(enums::MENU);
+                        return enums::MENU;
                         break;
 
                     default:
-                        ir_a(enums::AYUDA);
+                        return enums::AYUDA;
                         break;
                 }
                 break;
@@ -167,9 +167,9 @@ namespace interfaz {
                 ayuda::mostrar();
                 recibir_respuesta();
                 if (std::strcmp("q", respuesta) == 0)
-                    ir_a(enums::MENU);
+                    return enums::MENU;
                 else
-                    ir_a(pantalla_actual);
+                    return pantalla_actual;
                 break;
 
             case enums::SALIR:
@@ -181,18 +181,20 @@ namespace interfaz {
                     case 'q':
                     case 'y':
                         sistema::clear();
+                        return enums::NINGUNO;
                         break;
 
                     default:
-                        ir_a(pantalla_actual);
+                        return pantalla_actual;
                         break;
                 }
                 break;
 
             default:
-                ir_a(enums::AYUDA);
+                return enums::AYUDA;
                 break;
         }
+        return pantalla;
     }
 }
 

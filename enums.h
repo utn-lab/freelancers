@@ -8,6 +8,7 @@ usados desde la mayoria de los otros archivos.
 
 namespace enums {
     enum pantalla {
+        NINGUNO,
         MENU,
         EMPLEADO,
         SECTOR,
