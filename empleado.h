@@ -227,7 +227,7 @@ namespace empleado {
                 pantalla::mostrar_nueva_linea(1);
                 pantalla::mostrar_seleccione(
                         etiquetas::buscar_seleccionar,
-                        ocurrencias);
+                        0);
             }
             return indice_actual;
         }
@@ -249,11 +249,10 @@ namespace empleado {
             std::cin.getline(nuevo_empleado.dni, 16);
             if (std::strcmp(nuevo_empleado.dni, "q") == 0)
                 return;
+            std::cout << etiquetas::validando << std::endl;
             if (nuevo_empleado.dni[0] == '\0')
                 std::cout << etiquetas::invalido << std::endl;
         }
-
-        std::cout << etiquetas::validando << std::endl;
 
         // Chequear si el DNI existe en la lista actual de empleados
         int existe = -1;

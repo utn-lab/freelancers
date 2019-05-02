@@ -12,7 +12,7 @@ definidas en estructuras.h.
 namespace etiquetas {
     const char seleccionar[] = "Seleccione";
     const char nuevo_valor[] = "Nuevo valor";
-    const char buscar_seleccionar[] = "Buscar palabra o seleccionar fila";
+    const char buscar_seleccionar[] = "Buscar palabra o ingresar comando";
     const char invalido[] = "Debe indicar un registro valido, o 'q'.";
     const char no_existe[] = "Agregando un registro nuevo.";
     const char existe[] = "Este registro existe. Los cambios modificaran el registro que ya existe.";
