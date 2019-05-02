@@ -13,6 +13,7 @@ namespace etiquetas {
     const char seleccionar[] = "Seleccione";
     const char nuevo_valor[] = "Nuevo valor";
     const char buscar_seleccionar[] = "Buscar palabra o seleccionar fila";
+    const char invalido[] = "Debe indicar un registro valido, o 'q'.";
     const char no_existe[] = "Agregando un registro nuevo.";
     const char existe[] = "Este registro existe. Los cambios modificaran el registro que ya existe.";
     const char no_registros[] = "No hay registros";
@@ -107,7 +108,7 @@ namespace etiquetas {
     };
 
     estructuras::lista AYUDA = {
-        11,
+        16,
         {
             "Modulos:",
             "",
@@ -118,8 +119,13 @@ namespace etiquetas {
             "Controles:",
             "",
             "En menu, la primer letra selecciona una opcion (a = ayuda, s = salir);",
-            "En grilla, al menos dos letras para buscar palabra; 'q' para salir;",
-            "'n' para agregar registro; 'a' para pagina anterior, 's' para siguiente."
+            "En grilla:",
+            "",
+            "- Al menos dos letras para buscar palabra",
+            "- 'a' = pagina anterior, 's' = siguiente",
+            "- 'n' = nuevo empleado",
+            "- 'h' = cambiar horas trabajadas por empleado",
+            "- 'q' = salir"
         }
     };
 

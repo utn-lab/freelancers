@@ -319,6 +319,53 @@ namespace empleado {
                 &nuevo_empleado, sizeof(estructuras::empleado), 1, fp);
         std::fclose(fp);
     }
+
+    void cambiar_horas() {
+        pantalla::mostrar_lista_vertical(
+                &etiquetas::TITULO_EMPLEADO_HORAS,
+                enums::CEN);
+        char respuesta[100];
+        int existe = -1;
+        while (existe == -1) {
+            std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
+            std::cin.getline(respuesta, 100);
+            // Si el usuario apreto 'q'
+            if (std::strcmp("q", respuesta) == 0)
+                return;
+            std::cout << etiquetas::validando << std::endl;
+            for (int i = 0; i < empleados_c; i++) {
+                if (std::strcmp(respuesta, empleados[i].dni) == 0) {
+                    existe = i;
+                    break;
+                }
+            }
+            if (existe == -1)
+                std::cout << etiquetas::invalido << std::endl;
+            else
+                std::cout << etiquetas::existe << std::endl;
+        }
+
+        estructuras::lista *p;
+        p = empleado_a_lista(&empleados[existe]);
+        pantalla::mostrar_lista_vertical(
+                p,
+                enums::IZQ);
+        liberar_lista(p);
+
+        std::cout << etiquetas::nuevo_valor << ": ";
+        std::cin >> empleados[existe].horas_semana;
+
+        // Guardar en archivo
+        FILE *fp;
+        fp = std::fopen(archivo, "rb+");
+        std::fseek(
+                fp,
+                sizeof(estructuras::empleado) * existe,
+                SEEK_SET);
+        std::fwrite(
+                &empleados[existe], sizeof(estructuras::empleado), 1, fp);
+        std::fclose(fp);
+    }
 }
 
 #endif // EMPLEADO_H_INCLUDED

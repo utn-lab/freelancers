@@ -86,12 +86,21 @@ namespace interfaz {
                     empleado::mostrar(respuesta);
                     recibir_respuesta();
                     switch (respuesta[0]) {
-                        default:
+                        case 'h':
+                            sistema::clear();
+                            empleado::cambiar_horas();
                             ir_a(enums::EMPLEADO);
                             break;
                     }
+                    ir_a(enums::EMPLEADO);
                 } else {
                     switch (respuesta[0]) {
+                        case 'h':
+                            sistema::clear();
+                            empleado::cambiar_horas();
+                            ir_a(enums::EMPLEADO);
+                            break;
+
                         case 'n':
                             sistema::clear();
                             empleado::nuevo();

@@ -12,7 +12,7 @@ namespace estructuras {
     // v es un array de arrays char
     struct lista {
         const int c;
-        const char *v[12];
+        const char *v[16];
     };
 
     struct empleado {
