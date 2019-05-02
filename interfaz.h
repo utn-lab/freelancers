@@ -7,6 +7,7 @@ usuario.
 #ifndef INTERFAZ_H_INCLUDED
 #define INTERFAZ_H_INCLUDED
 
+#include "estado.h"
 #include "enums.h"
 #include "sistema.h"
 #include "varios.h"
@@ -14,6 +15,9 @@ usuario.
 #include "sector.h"
 
 namespace interfaz {
+    // Indice en empleado::empleados desde donde empezar
+    // a mostrar datos en grilla
+    int grilla_indice = 0;
     // Usada desde ir_a
     enums::pantalla pantalla_actual;
     // Respuesta de usuario
@@ -70,18 +74,18 @@ namespace interfaz {
                 break;
 
             case enums::EMPLEADO:
-                empleado::mostrar(0, NULL);
+                // El argumento es un patron
+                // Si es NULL, muestra todos los empleados
+                empleado::mostrar(NULL);
                 recibir_respuesta();
 
                 if (empleado::empleados_c
                         && std::strlen(respuesta) >= 2) {
+                    // Buscar empleado
                     sistema::clear();
-                    empleado::mostrar(0, respuesta);
+                    empleado::mostrar(respuesta);
                     recibir_respuesta();
                     switch (respuesta[0]) {
-                        case 'q':
-                            break;
-
                         default:
                             ir_a(enums::EMPLEADO);
                             break;
@@ -134,7 +138,10 @@ namespace interfaz {
             case enums::AYUDA:
                 ayuda::mostrar();
                 recibir_respuesta();
-                ir_a(pantalla_actual);
+                if (std::strcmp("q", respuesta) == 0)
+                    ir_a(enums::MENU);
+                else
+                    ir_a(pantalla_actual);
                 break;
 
             case enums::SALIR:

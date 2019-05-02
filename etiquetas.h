@@ -13,6 +13,8 @@ namespace etiquetas {
     const char seleccionar[] = "Seleccione";
     const char nuevo_valor[] = "Nuevo valor";
     const char buscar_seleccionar[] = "Buscar palabra o seleccionar fila";
+    const char no_existe[] = "Agregando un registro nuevo.";
+    const char existe[] = "Este registro existe. Los cambios modificaran el registro que ya existe.";
     const char no_registros[] = "No hay registros";
     const char validando[] = "Validando...";
     const char guardando[] = "Guardando...";
@@ -70,7 +72,7 @@ namespace etiquetas {
     estructuras::lista TITULO_SALIR = {
         1,
         {
-            "SALIR"
+            "SALIR?"
         }
     };
 

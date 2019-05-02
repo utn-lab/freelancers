@@ -12,6 +12,7 @@ la pantalla, usando funciones de pantalla.h.
 #include <cstring>
 #include <iostream>
 
+#include "estado.h"
 #include "enums.h"
 #include "estructuras.h"
 #include "etiquetas.h"
@@ -126,7 +127,6 @@ namespace empleado {
     // Muestra pantalla empleado
     // Devuelve indice alcanzado
     int mostrar(
-            const int empezar_por_indice,
             const char *patron) { // patron puede ser NULL
         // Mostrar titulo
         pantalla::mostrar_lista_vertical(
@@ -166,7 +166,7 @@ namespace empleado {
             int limite;
             if (empleados_c > pantalla::grilla_buffer) {
                 limite = pantalla::grilla_buffer;
-                limite += empezar_por_indice;
+                limite += estado::empezar_por_indice;
             } else {
                 limite = empleados_c;
             }
@@ -174,29 +174,30 @@ namespace empleado {
             // Mostrar renglones de grilla
             estructuras::lista *p;
             int ocurrencias = 0;
+            int indice_actual;
             // Empezando por el indice indicado por el parametro
-            // empezar_por_indice, recorrer array de empleados
+            // estado::empezar_por_indice, recorrer array de empleados
             for (
-                    int renglon = empezar_por_indice;
-                    renglon < limite;
-                    renglon++) {
+                    indice_actual = estado::empezar_por_indice;
+                    indice_actual < limite;
+                    indice_actual++) {
                 // Si empleado esta activo (inactivo = borrado), y si patron
                 // es nulo, o no es nulo, pero el parametro coincide
-                if (empleados[renglon].activo
+                if (empleados[indice_actual].activo
                         && (!patron
                             || buscar_patron(
-                                empleados[renglon].dni, patron)
+                                empleados[indice_actual].dni, patron)
                             || buscar_patron(
-                                empleados[renglon].nombre, patron)
+                                empleados[indice_actual].nombre, patron)
                             || buscar_patron(
-                                empleados[renglon].apellido, patron))) {
-                    // pantalla::mostrar_grilla_renglon recibe un
+                                empleados[indice_actual].apellido, patron))) {
+                    // pantalla::mostrar_grilla_indice_actual recibe un
                     // estructuras::lista como parametro, pero el
                     // vector de empleados que estamos leyendo
                     // contiene estructura::empleado
                     // Convertirlo
                     p = empleado_a_lista(
-                            &empleados[renglon]);
+                            &empleados[indice_actual]);
                     // Pasar a mostrar_grilla_renglon
                     pantalla::mostrar_grilla_renglon(
                             p,
@@ -228,7 +229,7 @@ namespace empleado {
                         etiquetas::buscar_seleccionar,
                         ocurrencias);
             }
-            return ocurrencias;
+            return indice_actual;
         }
     }
 
@@ -246,10 +247,11 @@ namespace empleado {
         while (nuevo_empleado.dni[0] == '\0') {
             std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
             std::cin.getline(nuevo_empleado.dni, 16);
-            std::cout << etiquetas::validando << std::endl;
             if (std::strcmp(nuevo_empleado.dni, "q") == 0)
                 return;
         }
+
+        std::cout << etiquetas::validando << std::endl;
 
         // Chequear si el DNI existe en la lista actual de empleados
         int existe = -1;
@@ -261,8 +263,11 @@ namespace empleado {
                 break;
             }
         }
+        if (existe == -1)
+            std::cout << etiquetas::no_existe << std::endl;
+        else
+            std::cout << etiquetas::existe << std::endl;
 
-        pantalla::mostrar_nueva_linea(1);
         // Nombre
         std::cout << etiquetas::EMPLEADO_CABECERA.v[1] << ": ";
         std::cin.getline(nuevo_empleado.nombre, 32);
@@ -270,10 +275,6 @@ namespace empleado {
         // Apellido
         std::cout << etiquetas::EMPLEADO_CABECERA.v[2] << ": ";
         std::cin.getline(nuevo_empleado.apellido, 32);
-
-        // Horas/semana
-        std::cout << etiquetas::EMPLEADO_CABECERA.v[3] << ": ";
-        std::cin >> nuevo_empleado.horas_semana;
 
         // Sector
         {
@@ -293,6 +294,11 @@ namespace empleado {
             }
             nuevo_empleado.sector = (enums::sector)(temp - 1);
         }
+
+        // Horas/semana
+        std::cout << etiquetas::EMPLEADO_CABECERA.v[3] << ": ";
+        std::cin >> nuevo_empleado.horas_semana;
+
         std::cout << etiquetas::guardando << std::endl;
 
         // Guardar dato en archivo
