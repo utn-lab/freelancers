@@ -249,6 +249,8 @@ namespace empleado {
             std::cin.getline(nuevo_empleado.dni, 16);
             if (std::strcmp(nuevo_empleado.dni, "q") == 0)
                 return;
+            if (nuevo_empleado.dni[0] == '\0')
+                std::cout << etiquetas::invalido << std::endl;
         }
 
         std::cout << etiquetas::validando << std::endl;
