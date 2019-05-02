@@ -45,7 +45,7 @@ namespace etiquetas {
     estructuras::lista TITULO_EMPLEADO_AGREGAR = {
         1,
         {
-            "NUEVO EMPLEADO"
+            "AGREGAR O MODIFICAR EMPLEADO"
         }
     };
 

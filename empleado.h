@@ -278,8 +278,14 @@ namespace empleado {
         }
         if (existe == -1)
             std::cout << etiquetas::no_existe << std::endl;
-        else
-            std::cout << etiquetas::existe << std::endl;
+        else {
+            estructuras::lista *p;
+            p = empleado_a_lista(&empleados[existe]);
+            pantalla::mostrar_lista_vertical(
+                    p,
+                    enums::IZQ);
+            liberar_lista(p);
+        }
 
         // Nombre
         std::cout << etiquetas::EMPLEADO_CABECERA.v[1] << ": ";
