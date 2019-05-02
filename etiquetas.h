@@ -28,7 +28,7 @@ namespace etiquetas {
     estructuras::lista TITULO_EMPLEADO = {
         1,
         {
-            "PLANILLA DE EMPLEADOS"
+            "EMPLEADOS"
         }
     };
 
@@ -77,7 +77,7 @@ namespace etiquetas {
     estructuras::lista MENU_PRINCIPAL = {
         4,
         {
-            "Planilla de empleados",
+            "Empleados",
             "Valores de hora",
             "Ayuda",
             "Salir"
