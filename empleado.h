@@ -281,14 +281,15 @@ namespace empleado {
             int temp = -1;
 
             std::cout << etiquetas::EMPLEADO_CABECERA.v[3]
-                << " (1-" << etiquetas::EMPLEADO_TIPOS.c << "):";
+                << ":" << std::endl;
             pantalla::mostrar_nueva_linea(1);
             pantalla::mostrar_lista_vertical(
                     &etiquetas::EMPLEADO_TIPOS,
                     enums::IZQ);
             pantalla::mostrar_nueva_linea(1);
             while (!(temp >= 1 && temp <= 3)) {
-                std::cout << etiquetas::seleccionar << ": ";
+                std::cout << etiquetas::seleccionar
+                    << " (1-" << etiquetas::EMPLEADO_TIPOS.c << "): ";
                 std::cin >> temp;
                 std::cin.ignore();
             }
