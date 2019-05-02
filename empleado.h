@@ -312,6 +312,7 @@ namespace empleado {
         // Horas/semana
         std::cout << etiquetas::EMPLEADO_CABECERA.v[4] << ": ";
         std::cin >> nuevo_empleado.horas_semana;
+        std::cin.ignore();
 
         std::cout << etiquetas::guardando << std::endl;
 
