@@ -28,16 +28,6 @@ namespace interfaz {
         std::cin.getline(respuesta, 100);
     }
 
-    int respuesta_es_numero() { 
-        /*
-        int i = 0;
-        while (respuesta[i] != '\0') {
-            i++;
-        }
-        */
-        return 0;
-    }
-
     // ir_a: responsable del flujo del programa
     enums::pantalla ir_a(enums::pantalla pantalla) {
         if (pantalla != enums::AYUDA
@@ -52,12 +42,12 @@ namespace interfaz {
                 switch (respuesta[0]) {
                     case '1':
                     case 'e':
-                    case 'p':
                         return enums::EMPLEADO;
                         break;
 
                     case '2':
                     case 'v':
+                        // Valores de hora
                         return enums::SECTOR;
                         break;
 
