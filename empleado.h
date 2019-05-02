@@ -104,6 +104,18 @@ namespace empleado {
         std::fclose(fp);
     }
 
+    void guardar_solo_activos() {
+        FILE *fp;
+        fp = std::fopen(archivo, "wb");
+        for (int i = 0; i < empleados_c; i++)
+            if (empleados[i].activo)
+                std::fwrite(
+                        &empleados[i],
+                        sizeof(estructuras::empleado),
+                        1,
+                        fp);
+    }
+
     void a_minusculas(char *string) {
         int i = 0;
         while (string[i] != '\0') {

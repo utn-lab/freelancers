@@ -10,4 +10,5 @@ int main(int argc, char **argv) {
     empleado::cargar();
     sector::cargar();
     interfaz::ir_a(enums::MENU);
+    empleado::guardar_solo_activos();
 }
