@@ -16,6 +16,7 @@ la pantalla, usando funciones de pantalla.h.
 #include "estructuras.h"
 #include "etiquetas.h"
 #include "pantalla.h"
+#include "sector.h"
 
 namespace empleado {
     // Archivo que guarda vector de estructura::empleado
@@ -30,15 +31,21 @@ namespace empleado {
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
         char *horas_char = new char[16];
+        char *salario_char = new char[16];
+        float salario =
+            sector::valor_hora[empleado->sector] * empleado->horas_semana * 4;
         std::snprintf(horas_char, 16, "%.1f", empleado->horas_semana);
+        std::snprintf(
+                salario_char, 16, "$ %.2f", salario);
         estructuras::lista *empleado_lista = new estructuras::lista {
-            5,
+            etiquetas::EMPLEADO_CABECERA.c,
             {
                 empleado->dni,
                 empleado->nombre,
                 empleado->apellido,
+                etiquetas::EMPLEADO_TIPOS.v[empleado->sector],
                 horas_char,
-                etiquetas::EMPLEADO_TIPOS.v[empleado->sector]
+                salario_char
             }
         };
         return empleado_lista;
@@ -48,7 +55,8 @@ namespace empleado {
     // de la memoria
     void liberar_lista(
             estructuras::lista *empleado_lista) {
-        delete[] empleado_lista->v[3];
+        delete[] empleado_lista->v[6];
+        delete[] empleado_lista->v[5];
         delete empleado_lista;
     }
 
@@ -116,7 +124,8 @@ namespace empleado {
     }
 
     // Muestra pantalla empleado
-    void mostrar(
+    // Devuelve indice alcanzado
+    int mostrar(
             const int empezar_por_indice,
             const char *patron) { // patron puede ser NULL
         // Mostrar titulo
@@ -140,6 +149,7 @@ namespace empleado {
             pantalla::mostrar_seleccione(
                     etiquetas::enter,
                     0);
+            return 0;
         } else {
             // Por cada columna, elegir una alineacion
             // Esto afecta a renglones y no a la cabecera
@@ -147,8 +157,9 @@ namespace empleado {
                 enums::DER,
                 enums::IZQ,
                 enums::IZQ,
+                enums::CEN,
                 enums::DER,
-                enums::CEN
+                enums::DER
             };
             // Si la cantidad de empleados es superior a lo que la grilla
             // permite ver, el limite es el buffer de grilla
@@ -217,6 +228,7 @@ namespace empleado {
                         etiquetas::buscar_seleccionar,
                         ocurrencias);
             }
+            return ocurrencias;
         }
     }
 

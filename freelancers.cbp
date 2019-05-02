@@ -27,7 +27,6 @@
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
 		<Unit filename="empleado.h" />
-		<Unit filename="horas.h" />
 		<Unit filename="sector.h" />
 		<Unit filename="enums.h" />
 		<Unit filename="estado.h" />

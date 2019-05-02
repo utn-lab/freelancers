@@ -11,7 +11,6 @@ usuario.
 #include "sistema.h"
 #include "varios.h"
 #include "empleado.h"
-#include "horas.h"
 #include "sector.h"
 
 namespace interfaz {
@@ -49,20 +48,17 @@ namespace interfaz {
                 switch (respuesta[0]) {
                     case '1':
                     case 'e':
+                    case 'p':
                         ir_a(enums::EMPLEADO);
                         break;
 
                     case '2':
-                    case 'p':
-                        ir_a(enums::HORAS);
-                        break;
-
-                    case '3':
                     case 'v':
                         ir_a(enums::SECTOR);
                         break;
 
-                    case '5':
+                    case '4':
+                    case 's':
                     case 'q':
                         ir_a(enums::SALIR);
                         break;
@@ -107,23 +103,6 @@ namespace interfaz {
                             ir_a(enums::AYUDA);
                             break;
                     }
-                }
-                break;
-
-            case enums::HORAS:
-                horas::mostrar();
-                recibir_respuesta();
-                switch (respuesta[0]) {
-                    case '\0':
-                        break;
-
-                    case 'q':
-                        ir_a(enums::MENU);
-                        break;
-
-                    default:
-                        ir_a(enums::AYUDA);
-                        break;
                 }
                 break;
 

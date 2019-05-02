@@ -28,7 +28,14 @@ namespace etiquetas {
     estructuras::lista TITULO_EMPLEADO = {
         1,
         {
-            "EMPLEADOS"
+            "PLANILLA DE EMPLEADOS"
+        }
+    };
+
+    estructuras::lista TITULO_EMPLEADO_HORAS = {
+        1,
+        {
+            "CAMBIAR HORAS DE EMPLEADO"
         }
     };
 
@@ -36,13 +43,6 @@ namespace etiquetas {
         1,
         {
             "NUEVO EMPLEADO"
-        }
-    };
-
-    estructuras::lista TITULO_HORAS = {
-        1,
-        {
-            "PLANILLA DE HORAS"
         }
     };
 
@@ -75,10 +75,9 @@ namespace etiquetas {
     };
 
     estructuras::lista MENU_PRINCIPAL = {
-        5,
+        4,
         {
-            "Empleados",
-            "Planilla de horas",
+            "Planilla de empleados",
             "Valores de hora",
             "Ayuda",
             "Salir"
@@ -86,21 +85,14 @@ namespace etiquetas {
     };
 
     estructuras::lista EMPLEADO_CABECERA = {
-        5,
+        6,
         {
             "DNI",
             "Nombre",
             "Apellido",
+            "Rol",
             "Horas/semana",
-            "Rol"
-        }
-    };
-
-    estructuras::lista HORAS_CABECERA = {
-        2,
-        {
-            EMPLEADO_CABECERA.v[0],
-            EMPLEADO_CABECERA.v[3]
+            "Salario"
         }
     };
 
@@ -117,8 +109,8 @@ namespace etiquetas {
         {
             "Modulos:",
             "",
-            "- Empleado: permite ver y agregar empleados",
-            "- Planilla de horas: para ver las horas trabajadas por empleados",
+            "- Empleado: permite ver y agregar empleados, y ver las horas modificadas",
+            "  por ellos",
             "- Valores de hora: para cambiar el valor de hora (salario) para cada rol",
             "",
             "Controles:",

@@ -135,6 +135,8 @@ namespace pantalla {
             estructuras::lista *renglon,
             enums::alineacion *alineaciones) {
         int campo_ancho = (pantalla_ancho - 2) / renglon->c;
+        if (((pantalla_ancho - 2) / renglon->c) % 2 != 0)
+            campo_ancho--;
         for (int columna = 0; columna < renglon->c; columna++) {
             mostrar_campo(
                     renglon->v[columna],

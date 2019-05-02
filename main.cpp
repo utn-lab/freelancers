@@ -8,5 +8,6 @@ main: punto de partida para ejecucion del programa.
 
 int main(int argc, char **argv) {
     empleado::cargar();
+    sector::cargar();
     interfaz::ir_a(enums::MENU);
 }
