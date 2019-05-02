@@ -280,7 +280,7 @@ namespace empleado {
         {
             int temp = -1;
 
-            std::cout << etiquetas::EMPLEADO_CABECERA.v[4]
+            std::cout << etiquetas::EMPLEADO_CABECERA.v[3]
                 << " (1-" << etiquetas::EMPLEADO_TIPOS.c << "):";
             pantalla::mostrar_nueva_linea(1);
             pantalla::mostrar_lista_vertical(
@@ -296,7 +296,7 @@ namespace empleado {
         }
 
         // Horas/semana
-        std::cout << etiquetas::EMPLEADO_CABECERA.v[3] << ": ";
+        std::cout << etiquetas::EMPLEADO_CABECERA.v[4] << ": ";
         std::cin >> nuevo_empleado.horas_semana;
 
         std::cout << etiquetas::guardando << std::endl;
