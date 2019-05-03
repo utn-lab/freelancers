@@ -203,7 +203,7 @@ namespace empleado {
                     if ((estado::salario_desde > 0
                                 && salario < estado::salario_desde)
                             || (estado::salario_hasta > 0
-                                && salario < estado::salario_hasta))
+                                && salario > estado::salario_hasta))
                         continue;
                 }
                 if (empleados[indice_actual].activo
