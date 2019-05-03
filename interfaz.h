@@ -104,8 +104,7 @@ namespace interfaz {
                             if (estado::empezar_por_indice
                                     > empleado::empleados_c)
                                 estado::empezar_por_indice =
-                                    empleado::empleados_c
-                                    - pantalla::grilla_buffer;
+                                    empleado::empleados_c;
                             return enums::EMPLEADO;
                             break;
 
