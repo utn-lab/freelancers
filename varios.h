@@ -47,8 +47,8 @@ namespace ayuda {
 
 namespace opciones {
     estructuras::lista *opciones_a_lista() {
-        char *mostrar_eliminados = new char[128];
-        char *mostrar_eliminados_solamente = new char[128];
+        char *mostrar_eliminados = new char[34];
+        char *mostrar_eliminados_solamente = new char[38];
         char *salario_desde = new char[128];
         char *salario_hasta = new char[128];
         if (estado::mostrar_eliminados) {
