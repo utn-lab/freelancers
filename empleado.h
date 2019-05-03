@@ -27,14 +27,18 @@ namespace empleado {
     // Contenido de archivo una vez cargado en memoria
     estructuras::empleado *empleados;
 
+    float obtener_salario(estructuras::empleado *empleado) {
+        return
+            sector::valor_hora[empleado->sector] * empleado->horas_semana * 4;
+    }
+
     // Declara estructura::lista a partir de estructura::empleado,
     // devolviendo un puntero a la estructura::lista
     estructuras::lista *empleado_a_lista(
             estructuras::empleado *empleado) {
         char *horas_char = new char[16];
         char *salario_char = new char[16];
-        float salario =
-            sector::valor_hora[empleado->sector] * empleado->horas_semana * 4;
+        float salario = obtener_salario(empleado);
         std::snprintf(horas_char, 16, "%.1f", empleado->horas_semana);
         std::snprintf(
                 salario_char, 16, "$ %.2f", salario);
@@ -193,29 +197,42 @@ namespace empleado {
                     indice_actual = estado::empezar_por_indice;
                     indice_actual < limite;
                     indice_actual++) {
+                if (estado::salario_desde > 0
+                        || estado::salario_hasta > 0) {
+                    float salario = obtener_salario(&empleados[indice_actual]);
+                    if ((estado::salario_desde > 0
+                                && salario < estado::salario_desde)
+                            || (estado::salario_hasta > 0
+                                && salario < estado::salario_hasta))
+                        continue;
+                }
+                if (empleados[indice_actual].activo
+                        && estado::mostrar_eliminados_solamente)
+                    continue;
                 // Si empleado esta activo (inactivo = borrado), y si patron
                 // es nulo, o no es nulo, pero el parametro coincide
-                if (empleados[indice_actual].activo
-                        && (!patron
+                if (empleados[indice_actual].activo || estado::mostrar_eliminados) {
+                    if (!patron
                             || buscar_patron(
                                 empleados[indice_actual].dni, patron)
                             || buscar_patron(
                                 empleados[indice_actual].nombre, patron)
                             || buscar_patron(
-                                empleados[indice_actual].apellido, patron))) {
-                    // pantalla::mostrar_grilla_indice_actual recibe un
-                    // estructuras::lista como parametro, pero el
-                    // vector de empleados que estamos leyendo
-                    // contiene estructura::empleado
-                    // Convertirlo
-                    p = empleado_a_lista(
-                            &empleados[indice_actual]);
-                    // Pasar a mostrar_grilla_renglon
-                    pantalla::mostrar_grilla_renglon(
-                            p,
-                            alineaciones);
-                    liberar_lista(p);
-                    ocurrencias++;
+                                empleados[indice_actual].apellido, patron)) {
+                        // pantalla::mostrar_grilla_indice_actual recibe un
+                        // estructuras::lista como parametro, pero el
+                        // vector de empleados que estamos leyendo
+                        // contiene estructura::empleado
+                        // Convertirlo
+                        p = empleado_a_lista(
+                                &empleados[indice_actual]);
+                        // Pasar a mostrar_grilla_renglon
+                        pantalla::mostrar_grilla_renglon(
+                                p,
+                                alineaciones);
+                        liberar_lista(p);
+                        ocurrencias++;
+                    }
                 }
             }
 
@@ -340,6 +357,17 @@ namespace empleado {
         std::fclose(fp);
     }
 
+    int dni_existe(const char *dni) {
+        int existe = -1;
+        for (int i = 0; i < empleados_c; i++) {
+            if (std::strcmp(dni, empleados[i].dni) == 0) {
+                existe = i;
+                break;
+            }
+        }
+        return existe;
+    }
+
     void cambiar_horas() {
         pantalla::mostrar_lista_vertical(
                 &etiquetas::TITULO_EMPLEADO_HORAS,
@@ -353,12 +381,7 @@ namespace empleado {
             if (std::strcmp("q", respuesta) == 0)
                 return;
             std::cout << etiquetas::validando << std::endl;
-            for (int i = 0; i < empleados_c; i++) {
-                if (std::strcmp(respuesta, empleados[i].dni) == 0) {
-                    existe = i;
-                    break;
-                }
-            }
+            existe = dni_existe(respuesta);
             if (existe == -1)
                 std::cout << etiquetas::invalido << std::endl;
         }
@@ -375,6 +398,49 @@ namespace empleado {
         std::cin.ignore();
 
         // Guardar en archivo
+        FILE *fp;
+        fp = std::fopen(archivo, "rb+");
+        std::fseek(
+                fp,
+                sizeof(estructuras::empleado) * existe,
+                SEEK_SET);
+        std::fwrite(
+                &empleados[existe], sizeof(estructuras::empleado), 1, fp);
+        std::fclose(fp);
+    }
+
+    void borrar() {
+        pantalla::mostrar_lista_vertical(
+                &etiquetas::TITULO_EMPLEADO_BORRAR,
+                enums::CEN);
+        char respuesta[100];
+        int existe = -1;
+        while (existe == -1) {
+            std::cout << etiquetas::EMPLEADO_CABECERA.v[0] << ": ";
+            std::cin.getline(respuesta, 100);
+            // Si el usuario apreto 'q'
+            if (std::strcmp("q", respuesta) == 0)
+                return;
+            std::cout << etiquetas::validando << std::endl;
+            existe = dni_existe(respuesta);
+            if (existe == -1)
+                std::cout << etiquetas::invalido << std::endl;
+        }
+
+        estructuras::lista *p;
+        p = empleado_a_lista(&empleados[existe]);
+        pantalla::mostrar_lista_vertical(
+                p,
+                enums::IZQ);
+        liberar_lista(p);
+
+        std::cout << etiquetas::continuar << " (s/n): ";
+        std::cin.getline(respuesta, 100);
+        if (respuesta[0] != 's')
+            return;
+
+        empleados[existe].activo = false;
+
         FILE *fp;
         fp = std::fopen(archivo, "rb+");
         std::fseek(

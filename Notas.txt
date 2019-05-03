@@ -1,0 +1,10 @@
+Notas sobre el trabajo:
+
+Para filtrar el listado por activos o inactivos, lo que hice fue agregar un item
+en el menu ("Opciones") que permite cambiar esta opcion, ya que es siempre la
+misma funcion la que verifica estos parametros en vez de otra distinta.
+
+Lo mismo ocurre con los salarios desde y hasta. Son modificables desde el menu
+opciones.
+
+Saludos

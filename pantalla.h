@@ -14,13 +14,8 @@ pantalla: funciones que imprimen informacion en la pantalla.
 #include "estructuras.h"
 
 namespace pantalla {
-#ifdef _WIN32
-    int pantalla_ancho = 120;
-    int pantalla_alto = 30;
-#else
     int pantalla_ancho = 80;
     int pantalla_alto = 24;
-#endif
     int grilla_buffer = pantalla_alto - 8;
 
     void cambiar_tamano(int ancho, int alto) {

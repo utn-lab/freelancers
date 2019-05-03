@@ -18,5 +18,5 @@ int main(int argc, char **argv) {
         pantalla = interfaz::ir_a(pantalla);
 
     // Limpiar empleados inactivos del archivo empleados::archivo
-    empleado::guardar_solo_activos();
+//    empleado::guardar_solo_activos();
 }

@@ -11,6 +11,7 @@ definidas en estructuras.h.
 
 namespace etiquetas {
     const char seleccionar[] = "Seleccione";
+    const char continuar[] = "Continuar?";
     const char nuevo_valor[] = "Nuevo valor";
     const char buscar_seleccionar[] = "Buscar palabra o ingresar comando";
     const char invalido[] = "Debe indicar un registro valido, o 'q'.";
@@ -42,6 +43,13 @@ namespace etiquetas {
         }
     };
 
+    estructuras::lista TITULO_EMPLEADO_BORRAR = {
+        1,
+        {
+            "BORRAR EMPLEADO"
+        }
+    };
+
     estructuras::lista TITULO_EMPLEADO_AGREGAR = {
         1,
         {
@@ -70,6 +78,20 @@ namespace etiquetas {
         }
     };
 
+    estructuras::lista TITULO_OPCIONES = {
+        1,
+        {
+            "OPCIONES"
+        }
+    };
+
+    estructuras::lista TITULO_OPCIONES_CAMBIAR = {
+        1,
+        {
+            "CAMBIAR OPCION"
+        }
+    };
+
     estructuras::lista TITULO_SALIR = {
         1,
         {
@@ -78,11 +100,12 @@ namespace etiquetas {
     };
 
     estructuras::lista MENU_PRINCIPAL = {
-        4,
+        5,
         {
             "Empleados",
             "Valores de hora",
             "Ayuda",
+            "Opciones",
             "Salir"
         }
     };
@@ -108,7 +131,7 @@ namespace etiquetas {
     };
 
     estructuras::lista AYUDA = {
-        16,
+        18,
         {
             "Modulos:",
             "",
@@ -120,12 +143,14 @@ namespace etiquetas {
             "",
             "En menu, la primer letra selecciona una opcion (a = ayuda, s = salir);",
             "En grilla:",
-            "",
             "- Al menos dos letras para buscar palabra",
             "- 'a' = pagina anterior, 's' = siguiente",
+            "- 'b' = borrar empleado",
             "- 'n' = nuevo empleado",
             "- 'h' = cambiar horas trabajadas por empleado",
-            "- 'q' = salir"
+            "- 'q' = salir",
+            "Para filtrar el listado de empleados por activos o inactivos, o por sus",
+            "respectivos salarios, cambiar estos parametros en Opciones."
         }
     };
 

@@ -13,6 +13,7 @@ namespace enums {
         EMPLEADO,
         SECTOR,
         AYUDA,
+        OPCIONES,
         SALIR
     };
 
