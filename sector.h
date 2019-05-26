@@ -15,7 +15,7 @@ sector: mantiene datos de sectores.
 namespace sector {
     const char archivo[] = "sector.bin";
     float valor_hora[3];
-    const int cant_sectores = 3;
+    const int sector_c = 3;
 
     estructuras::lista *sector_a_lista(
             enums::sector sector) {
@@ -51,7 +51,7 @@ namespace sector {
         std::fread(
                 &valor_hora,
                 sizeof(float),
-                cant_sectores,
+                sector_c,
                 fp);
 
         std::fclose(fp);
@@ -63,7 +63,7 @@ namespace sector {
         std::fwrite(
                 &valor_hora,
                 sizeof(float),
-                cant_sectores,
+                sector_c,
                 fp);
         std::fclose(fp);
     }
@@ -112,7 +112,7 @@ namespace sector {
         };
 
         estructuras::lista *p;
-        for (int i = 0; i < cant_sectores; i++) {
+        for (int i = 0; i < sector_c; i++) {
             p = sector_a_lista((enums::sector)i);
             pantalla::mostrar_grilla_renglon(
                     p,
@@ -124,7 +124,7 @@ namespace sector {
                 pantalla::pantalla_ancho);
         pantalla::mostrar_seleccione(
                 etiquetas::seleccionar,
-                cant_sectores);
+                sector_c);
     }
 }
 
